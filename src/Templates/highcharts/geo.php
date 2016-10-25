@@ -65,7 +65,11 @@ $graph = "
             });
         });
     </script>
-    <div id='$this->id'></div>
 ";
+
+if( !$this->customId )
+{
+    include __DIR__ . '/../_partials/div-container.php';
+}
 
 return $graph;
