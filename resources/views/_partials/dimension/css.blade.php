@@ -1,5 +1,7 @@
-@if($model->responsive)
-    height: 100%; width: 100%;
+@if($model->responsive && $model->height)
+    height: {{ $model->height }}px; width: 100%;
+@elseif($model->responsive)
+    height="100%" width="100%"
 @else
     @if($model->height)
         height: {{ $model->height }}px;
