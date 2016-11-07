@@ -9,10 +9,7 @@
         }
     ],
     "require": {
-        "php": ">=5.6.4",
-        "illuminate/support": "5.1.* || 5.2.* || 5.3.*",
-        "jlawrence/eos": "3.*",
-        "laravelcollective/html": "^5.3"
+        "jlawrence/eos": "3.*"
     },
     "autoload": {
         "psr-4": {

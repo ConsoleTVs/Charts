@@ -10,19 +10,19 @@
 
 ## Table Of Contents
 
--   [Installation](#installation)
-    -   [Video Tutorial](#video-tutorial)
--   [Default Settings](#default-settings)
--   [Example Usage](#example-usage)
--   [Create Charts](#create-charts)
--   [Multi Datasets Chart](#multi-datasets-charts)
--   [Database Charts](#database-charts)
--   [Realtime Charts](#realtime-charts)
--   [Math Functions Charts](#math-functions-charts)
--   [Charts Functions](#charts-functions)
--   [Available Chart Settings](#available-chart-settings)
--   [Chart Examples](#chart-examples)
--   [Extend your way](#extend-your-way)
+-	[Installation](#installation)
+	-	[Video Tutorial](#video-tutorial)
+-	[Default Settings](#default-settings)
+-	[Example Usage](#example-usage)
+-	[Create Charts](#create-charts)
+-	[Multi Datasets Chart](#multi-datasets-charts)
+-	[Database Charts](#database-charts)
+-	[Realtime Charts](#realtime-charts)
+-	[Math Functions Charts](#math-functions-charts)
+-	[Charts Functions](#charts-functions)
+-	[Available Chart Settings](#available-chart-settings)
+-	[Chart Examples](#chart-examples)
+-	[Extend your way](#extend-your-way)
 
 
 ## Installation
@@ -81,14 +81,13 @@ class TestController extends Controller
 {
     public function index()
     {
-        $chart = Charts::create('line', 'highcharts')
-            ->setView('custom.line.chart.view') // Use this if you want to use your own template
-            ->setTitle('My nice chart')
-            ->setLabels(['First', 'Second', 'Third'])
-            ->setValues([5,10,20])
-            ->setDimensions(1000,500)
-            ->setResponsive(false);
-        return view('test', ['chart' => $chart]);
+		$chart = Charts::create('line', 'highcharts')
+			->setTitle('My nice chart')
+			->setLabels(['First', 'Second', 'Third'])
+			->setValues([5,10,20])
+			->setDimensions(1000,500)
+			->setResponsive(false);
+		return view('test', ['chart' => $chart]);
     }
 }
 ```
@@ -105,13 +104,13 @@ Example View:
 
         <title>My Charts</title>
 
-        {!! Charts::assets() !!}
+		{!! Charts::assets() !!}
 
     </head>
     <body>
         <center>
-            {!! $chart->render() !!}
-        </center>
+			{!! $chart->render() !!}
+		</center>
     </body>
 </html>
 
@@ -119,30 +118,31 @@ Example View:
 
 ## Create Charts
 
-| Create Charts | line | area | bar | pie | donut | geo | gauge | temp | percentage | progressbar |
-|---------------|------|------|-----|-----|-------|-----|-------|------|------------|-------------|
-| chartjs       | x    | x    | x   | x   | x     | -   | -     | -    | -          | -           |
-| highcharts    | x    | x    | x   | x   | x     | x   | -     | -    | -          | -           |
-| google        | x    | x    | x   | x   | x     | x   | x     | -    | -          | -           |
-| material      | x    | -    | x   | -   | -     | -   | -     | -    | -          | -           |
-| chartist      | x    | x    | x   | x   | x     | -   | -     | -    | -          | -           |
-| fusioncharts  | x    | x    | x   | x   | x     | -   | -     | -    | -          | -           |
-| morris        | x    | x    | x   | -   | x     | -   | -     | -    | -          | -           |
-| plottablejs   | x    | x    | x   | x   | x     | -   | -     | -    | -          | -           |
-| minimalist    | x    | x    | x   | x   | x     | -   | -     | -    | -          | -           |
-| canvas-gauges | -    | -    | -   | -   | -     | -   | x     | x    | -          | -           |
-| justgage      | -    | -    | -   | -   | -     | -   | x     | -    | x          | -           |
-| progressbarjs | -    | -    | -   | -   | -     | -   | -     | -    | x          | x           |
+| Create Charts | line | area | bar | pie | donut | geo | gauge | temp | percentage | progressbar | pareto |
+|---------------|------|------|-----|-----|-------|-----|-------|------|------------|-------------|--------|
+| chartjs       | x    | x    | x   | x   | x     | -   | -     | -    | -          | -           | -      |
+| highcharts    | x    | x    | x   | x   | x     | x   | -     | -    | -          | -           | -      |
+| google        | x    | x    | x   | x   | x     | x   | x     | -    | -          | -           | -      |
+| material      | x    | -    | x   | -   | -     | -   | -     | -    | -          | -           | -      |
+| chartist      | x    | x    | x   | x   | x     | -   | -     | -    | -          | -           | -      |
+| fusioncharts  | x    | x    | x   | x   | x     | -   | -     | -    | -          | -           | -      |
+| morris        | x    | x    | x   | -   | x     | -   | -     | -    | -          | -           | -      |
+| plottablejs   | x    | x    | x   | x   | x     | -   | -     | -    | -          | -           | -      |
+| minimalist    | x    | x    | x   | x   | x     | -   | -     | -    | -          | -           | -      |
+| canvas-gauges | -    | -    | -   | -   | -     | -   | x     | x    | -          | -           | -      |
+| justgage      | -    | -    | -   | -   | -     | -   | x     | -    | x          | -           | -      |
+| progressbarjs | -    | -    | -   | -   | -     | -   | -     | -    | x          | x           | -      |
+| awesomechartjs| -    | -    | x   | x   | x     | -   | -     | -    | -          | -           | x      |
 
 The first argument of the create method is the chart type, and the second is the library
 
 ```php
 Charts::create('line', 'highcharts')
-    ->setTitle('My nice chart')
-    ->setLabels(['First', 'Second', 'Third'])
-    ->setValues([5,10,20])
-    ->setDimensions(1000,500)
-    ->setResponsive(false);
+	->setTitle('My nice chart')
+	->setLabels(['First', 'Second', 'Third'])
+	->setValues([5,10,20])
+	->setDimensions(1000,500)
+	->setResponsive(false);
 ```
 
 ## Multi Datasets Chart
@@ -166,25 +166,25 @@ To create multi-dataset charts simply add the values using the ```setDataset()``
 
 ```php
 Charts::multi('line', 'highcharts')
-    ->setColors(['#ff0000', '#00ff00', '#0000ff'])
-    ->setLabels(['One', 'Two', 'Three'])
-    ->setDataset('Test 1', [1,2,3])
-    ->setDataset('Test 2', [0,6,0])
-    ->setDataset('Test 3', [3,4,1]);
+	->setColors(['#ff0000', '#00ff00', '#0000ff'])
+	->setLabels(['One', 'Two', 'Three'])
+	->setDataset('Test 1', [1,2,3])
+	->setDataset('Test 2', [0,6,0])
+	->setDataset('Test 3', [3,4,1]);
 ```
 
--   setDataset(required string $element_label, required array $values)
+-	setDataset(required string $element_label, required array $values)
 
-    ```php
-        Charts::multi('bar', 'minimalist')
-                    ->setResponsive(false)
-                    ->setDimensions(0, 500)
-                    ->setColors(['#ff0000', '#00ff00', '#0000ff'])
-                    ->setLabels(['One', 'Two', 'Three'])
-                    ->setDataset('Test 1', [1,2,3])
-                    ->setDataset('Test 2', [0,6,0])
-                    ->setDataset('Test 3', [3,4,1]);
-    ```
+	```php
+		Charts::multi('bar', 'minimalist')
+		            ->setResponsive(false)
+		            ->setDimensions(0, 500)
+		            ->setColors(['#ff0000', '#00ff00', '#0000ff'])
+		            ->setLabels(['One', 'Two', 'Three'])
+		            ->setDataset('Test 1', [1,2,3])
+		            ->setDataset('Test 2', [0,6,0])
+		            ->setDataset('Test 3', [3,4,1]);
+	```
 
 ## Database Charts
 
@@ -205,193 +205,193 @@ The available methods are:
 
 - setData(required mixed $data)
 
-    Setup the data again.
+	Setup the data again.
 
-    ```php
-    $chart = Charts::database(User::all(), 'bar', 'highcharts')->setData(Role::all());
-    ```
+	```php
+	$chart = Charts::database(User::all(), 'bar', 'highcharts')->setData(Role::all());
+	```
 
 - setDateColumn(required string $column)
 
-    Set the column to group the data.
+	Set the column to group the data.
 
-    *Default:* ```created_at```
+	*Default:* ```created_at```
 
-    ```php
-    $chart = Charts::database(User::all(), 'bar', 'highcharts')->setDateColumn('my_date_column');
-    ```
+	```php
+	$chart = Charts::database(User::all(), 'bar', 'highcharts')->setDateColumn('my_date_column');
+	```
 
 - setDateFormat(required string $format)
 
-    Set the fancy date format for `groupByDay()` and `lastByDay()` function if `$fancy` set to true, must be called before those function.
+	Set the fancy date format for `groupByDay()` and `lastByDay()` function if `$fancy` set to true, must be called before those function.
 
-    *Default:* ```l dS M, Y```
+	*Default:* ```l dS M, Y```
 
-    ```php
-    $chart = Charts::database(User::all(), 'bar', 'highcharts')->setDateFormat('j F y');
-    ```
+	```php
+	$chart = Charts::database(User::all(), 'bar', 'highcharts')->setDateFormat('j F y');
+	```
 
 - setMonthFormat(required string $format)
 
-    Set the fancy date format for `groupByMonth()` and `lastByMonth()` function if `$fancy` set to true, must be called before those function.
+	Set the fancy date format for `groupByMonth()` and `lastByMonth()` function if `$fancy` set to true, must be called before those function.
 
-    *Default:* ```F, Y```
+	*Default:* ```F, Y```
 
-    ```php
-    $chart = Charts::database(User::all(), 'bar', 'highcharts')->setDateFormat('F Y');
-    ```
+	```php
+	$chart = Charts::database(User::all(), 'bar', 'highcharts')->setDateFormat('F Y');
+	```
 
 - groupBy(required string $column)
 
-    Groups the data based on a column.
+	Groups the data based on a column.
 
-    ```php
-    $chart = Charts::database(User::all(), 'bar', 'highcharts')
-        ->setElementLabel("Total")
-        ->setDimensions(1000, 500)
-        ->setResponsive(false)
-        ->groupBy('game');
-    ```
+	```php
+	$chart = Charts::database(User::all(), 'bar', 'highcharts')
+		->setElementLabel("Total")
+		->setDimensions(1000, 500)
+		->setResponsive(false)
+		->groupBy('game');
+	```
 
-    ![Example GroupBy](https://i.gyazo.com/30183fa75f6bee6848898c4dbe487491.png)
+	![Example GroupBy](https://i.gyazo.com/30183fa75f6bee6848898c4dbe487491.png)
 
 - groupByYear(optional int $years)
 
-    Groups the data based in years.
+	Groups the data based in years.
 
-    *Default:* ```$years = 4```
+	*Default:* ```$years = 4```
 
-    ```php
-    $chart = Charts::database(User::all(), 'bar', 'highcharts')
-        ->setElementLabel("Total")
-        ->setDimensions(1000, 500)
-        ->setResponsive(false)
-        ->groupByYear();
+	```php
+	$chart = Charts::database(User::all(), 'bar', 'highcharts')
+		->setElementLabel("Total")
+		->setDimensions(1000, 500)
+		->setResponsive(false)
+		->groupByYear();
 
-    // to display a number of years behind, pass a int parameter. For example to display the last 10 years:
-    $chart = Charts::database(User::all(), 'bar', 'highcharts')
-        ->setElementLabel("Total")
-        ->setDimensions(1000, 500)
-        ->setResponsive(false)
-        ->groupByYear(10);
-    ```
+	// to display a number of years behind, pass a int parameter. For example to display the last 10 years:
+	$chart = Charts::database(User::all(), 'bar', 'highcharts')
+		->setElementLabel("Total")
+		->setDimensions(1000, 500)
+		->setResponsive(false)
+		->groupByYear(10);
+	```
 
-    ![Example GroupByYear](https://i.gyazo.com/5d992b6ce858fee8ed455c61e3bec546.png)
+	![Example GroupByYear](https://i.gyazo.com/5d992b6ce858fee8ed455c61e3bec546.png)
 
 - groupByMonth(optional string $year, optional boolean $fancy)
 
-    Groups the data in months (if no year set, the current one will be used).
+	Groups the data in months (if no year set, the current one will be used).
 
-    *Default:* ```$year = 7, $fancy = false```
+	*Default:* ```$year = 7, $fancy = false```
 
-    ```php
-    $chart = Charts::database(User::all(), 'bar', 'highcharts')
-        ->setElementLabel("Total")
-        ->setDimensions(1000, 500)
-        ->setResponsive(false)
-        ->groupByMonth();
+	```php
+	$chart = Charts::database(User::all(), 'bar', 'highcharts')
+		->setElementLabel("Total")
+		->setDimensions(1000, 500)
+		->setResponsive(false)
+		->groupByMonth();
 
-    // to display a specific year, pass the parameter. For example to display the months of 2016 and display a fancy output label:
-    $chart = Charts::database(User::all(), 'bar', 'highcharts')
-        ->setElementLabel("Total")
-        ->setDimensions(1000, 500)
-        ->setResponsive(false)
-        ->groupByMonth('2016', true);
-    ```
+	// to display a specific year, pass the parameter. For example to display the months of 2016 and display a fancy output label:
+	$chart = Charts::database(User::all(), 'bar', 'highcharts')
+		->setElementLabel("Total")
+		->setDimensions(1000, 500)
+		->setResponsive(false)
+		->groupByMonth('2016', true);
+	```
 
-    ![Example GroupByYear](https://i.gyazo.com/8d93b2f74857047339317d54b5082868.png)
+	![Example GroupByYear](https://i.gyazo.com/8d93b2f74857047339317d54b5082868.png)
 
 - groupByDay(optional string $month, optional string $year, optional boolean $fancy)
 
-    Groups the data in days (if no year/month set, the current one will be used).
+	Groups the data in days (if no year/month set, the current one will be used).
 
-    *Default:* ```$month = date('m'), $year = date('Y'), $fancy = false```
+	*Default:* ```$month = date('m'), $year = date('Y'), $fancy = false```
 
-    ```php
-    $chart = Charts::database(User::all(), 'bar', 'highcharts')
-        ->setElementLabel("Total")
-        ->setDimensions(1000, 500)
-        ->setResponsive(false)
-        ->groupByDay();
+	```php
+	$chart = Charts::database(User::all(), 'bar', 'highcharts')
+		->setElementLabel("Total")
+		->setDimensions(1000, 500)
+		->setResponsive(false)
+		->groupByDay();
 
-    // to display a specific month and/or year, pass the parameters. For example to display the days of september 2016 and display a fancy output label:
-    $chart = Charts::database(User::all(), 'bar', 'highcharts')
-        ->setElementLabel("Total")
-        ->setDimensions(1000, 500)
-        ->setResponsive(false)
-        ->groupByDay('09', '2016', true);
-    ```
+	// to display a specific month and/or year, pass the parameters. For example to display the days of september 2016 and display a fancy output label:
+	$chart = Charts::database(User::all(), 'bar', 'highcharts')
+		->setElementLabel("Total")
+		->setDimensions(1000, 500)
+		->setResponsive(false)
+		->groupByDay('09', '2016', true);
+	```
 
-    ![Example GroupByYear](https://i.gyazo.com/b461f29f41a0a5ac046f1cea79083dcc.png)
+	![Example GroupByYear](https://i.gyazo.com/b461f29f41a0a5ac046f1cea79083dcc.png)
 
 - lastByYear(optional int $number)
 
-    Alias for groupByYear() method. Does the same.
+	Alias for groupByYear() method. Does the same.
 
-    *Default:* ```$number = 4```
+	*Default:* ```$number = 4```
 
-    ```php
-    $chart = Charts::database(User::all(), 'bar', 'highcharts')
-        ->setElementLabel("Total")
-        ->setDimensions(1000, 500)
-        ->setResponsive(false)
-        ->lastByYear();
+	```php
+	$chart = Charts::database(User::all(), 'bar', 'highcharts')
+		->setElementLabel("Total")
+		->setDimensions(1000, 500)
+		->setResponsive(false)
+		->lastByYear();
 
-    // to display a number of years behind, pass a int parameter. For example to display the last 3 years:
-    $chart = Charts::database(User::all(), 'bar', 'highcharts')
-        ->setElementLabel("Total")
-        ->setDimensions(1000, 500)
-        ->setResponsive(false)
-        ->lastByYear(3);
-    ```
+	// to display a number of years behind, pass a int parameter. For example to display the last 3 years:
+	$chart = Charts::database(User::all(), 'bar', 'highcharts')
+		->setElementLabel("Total")
+		->setDimensions(1000, 500)
+		->setResponsive(false)
+		->lastByYear(3);
+	```
 
-    ![Example LastByYear](https://i.gyazo.com/7f85bec0fb49f5729608aa87b8657fc1.png)
+	![Example LastByYear](https://i.gyazo.com/7f85bec0fb49f5729608aa87b8657fc1.png)
 
 - lastByMonth(optional int $number, optional boolean $fancy)
 
-    Display the numbers of months behind (relative to the current date).
+	Display the numbers of months behind (relative to the current date).
 
-    *Default:* ```$number = 6, $fancy = false```
+	*Default:* ```$number = 6, $fancy = false```
 
-    ```php
-    $chart = Charts::database(User::all(), 'bar', 'highcharts')
-        ->setElementLabel("Total")
-        ->setDimensions(1000, 500)
-        ->setResponsive(false)
-        ->lastByMonth();
+	```php
+	$chart = Charts::database(User::all(), 'bar', 'highcharts')
+		->setElementLabel("Total")
+		->setDimensions(1000, 500)
+		->setResponsive(false)
+		->lastByMonth();
 
-    // to display a number of months behind, pass a int parameter. For example to display the last 6 months and use a fancy output:
-    $chart = Charts::database(User::all(), 'bar', 'highcharts')
-        ->setElementLabel("Total")
-        ->setDimensions(1000, 500)
-        ->setResponsive(false)
-        ->lastByMonth(6, true);
-    ```
+	// to display a number of months behind, pass a int parameter. For example to display the last 6 months and use a fancy output:
+	$chart = Charts::database(User::all(), 'bar', 'highcharts')
+		->setElementLabel("Total")
+		->setDimensions(1000, 500)
+		->setResponsive(false)
+		->lastByMonth(6, true);
+	```
 
-    ![Example LastByMonth](https://i.gyazo.com/7c7df6503749fda8d96807d6bc2861aa.png)
+	![Example LastByMonth](https://i.gyazo.com/7c7df6503749fda8d96807d6bc2861aa.png)
 
 - lastByDay(optional int $number, optional boolean $fancy)
 
-    Display the numbers of days behind (relative to the current date).
+	Display the numbers of days behind (relative to the current date).
 
-    *Default:* ```$number = 7, $fancy = false```
+	*Default:* ```$number = 7, $fancy = false```
 
-    ```php
-    $chart = Charts::database(User::all(), 'bar', 'highcharts')
-        ->setElementLabel("Total")
-        ->setDimensions(1000, 500)
-        ->setResponsive(false)
-        ->lastByDay();
+	```php
+	$chart = Charts::database(User::all(), 'bar', 'highcharts')
+		->setElementLabel("Total")
+		->setDimensions(1000, 500)
+		->setResponsive(false)
+		->lastByDay();
 
-    // to display a number of days behind, pass a int parameter. For example to display the last 14 days and use a fancy output:
-    $chart = Charts::database(User::all(), 'bar', 'highcharts')
-        ->setElementLabel("Total")
-        ->setDimensions(1000, 500)
-        ->setResponsive(false)
-        ->lastByDay(14, true);
-    ```
+	// to display a number of days behind, pass a int parameter. For example to display the last 14 days and use a fancy output:
+	$chart = Charts::database(User::all(), 'bar', 'highcharts')
+		->setElementLabel("Total")
+		->setDimensions(1000, 500)
+		->setResponsive(false)
+		->lastByDay(14, true);
+	```
 
-    ![Example LastByDay](https://i.gyazo.com/eeac8c7551ed681ef3728454ba4be9f0.png)
+	![Example LastByDay](https://i.gyazo.com/eeac8c7551ed681ef3728454ba4be9f0.png)
 
 ## Realtime Charts
 
@@ -420,7 +420,7 @@ Example json:
 {"value":31}
 ```
 
-'value' can be changed to different index name with ```setValueName($string)```
+'value' can be changed to diferent index name with ```setValueName($string)```
 
 ```php
 $chart = Charts::realtime(url('/path/to/json'), 2000, 'gauge', 'google')
@@ -430,72 +430,72 @@ $chart = Charts::realtime(url('/path/to/json'), 2000, 'gauge', 'google')
             ->setHeight(300)
             ->setWidth(0)
             ->setTitle("Permissions Chart")
-            ->setValueName('value'); //This determines the json index for the value
+			->setValueName('value'); //This determines the json index for the value
 ```
 
 **Note:** The interval is set in ms
 
 The available methods are:
 
--   setValueName(required string $string)
+-	setValueName(required string $string)
 
-    Sets the value json index.
+	Sets the value json index.
 
-    *Default:* ```value```
+	*Default:* ```value```
 
-    ```php
-    $chart = Charts::realtime(url('/path/to/json'), 2000, 'gauge', 'google')
-                ->setValues([65, 0, 100])
-                ->setLabels(['First', 'Second', 'Third'])
-                ->setResponsive(false)
-                ->setHeight(300)
-                ->setWidth(0)
-                ->setTitle("Permissions Chart")
-                ->setValueName('value'); //This determines the json index for the value
-    ```
+	```php
+	$chart = Charts::realtime(url('/path/to/json'), 2000, 'gauge', 'google')
+				->setValues([65, 0, 100])
+				->setLabels(['First', 'Second', 'Third'])
+				->setResponsive(false)
+				->setHeight(300)
+				->setWidth(0)
+				->setTitle("Permissions Chart")
+				->setValueName('value'); //This determines the json index for the value
+	```
 
--   setUrl(required string $url)
+-	setUrl(required string $url)
 
-    Sets the url after chart object creation.
+	Sets the url after chart object creation.
 
-    ```php
-    $chart = Charts::realtime(url('/path/to/json'), 2000, 'gauge', 'google')
-                ->setValues([65, 0, 100])
-                ->setLabels(['First', 'Second', 'Third'])
-                ->setResponsive(false)
-                ->setHeight(300)
-                ->setWidth(0)
-                ->setTitle("Permissions Chart")
-                ->setUrl(url('/new/json'));
-    ```
+	```php
+	$chart = Charts::realtime(url('/path/to/json'), 2000, 'gauge', 'google')
+				->setValues([65, 0, 100])
+				->setLabels(['First', 'Second', 'Third'])
+				->setResponsive(false)
+				->setHeight(300)
+				->setWidth(0)
+				->setTitle("Permissions Chart")
+				->setUrl(url('/new/json'));
+	```
 
--   setInterval(required int $interval)
+-	setInterval(required int $interval)
 
-    Sets the interval after chart object creation (ms).
+	Sets the interval after chart object creation (ms).
 
-    ```php
-    $chart = Charts::realtime(url('/path/to/json'), 2000, 'gauge', 'google')
-                ->setValues([65, 0, 100])
-                ->setLabels(['First', 'Second', 'Third'])
-                ->setResponsive(false)
-                ->setHeight(300)
-                ->setWidth(0)
-                ->setTitle("Permissions Chart")
-                ->setInterval(3000); // in ms
-    ```
+	```php
+	$chart = Charts::realtime(url('/path/to/json'), 2000, 'gauge', 'google')
+				->setValues([65, 0, 100])
+				->setLabels(['First', 'Second', 'Third'])
+				->setResponsive(false)
+				->setHeight(300)
+				->setWidth(0)
+				->setTitle("Permissions Chart")
+				->setInterval(3000); // in ms
+	```
 
--   setMaxValues(required int $number)
+-	setMaxValues(required int $number)
 
-    Sets the max amount of values to be seen before removing the first one.
+	Sets the max ammount of values to be seen before removing the first one.
 
-    ```php
-    $chart = Charts::realtime(url('/path/to/json'), 1000, 'area', 'highcharts')
-                ->setResponsive(false)
-                ->setHeight(300)
-                ->setWidth(0)
-                ->setTitle("Permissions Chart")
-                ->setMaxValues(10);
-    ```
+	```php
+	$chart = Charts::realtime(url('/path/to/json'), 1000, 'area', 'highcharts')
+				->setResponsive(false)
+				->setHeight(300)
+				->setWidth(0)
+				->setTitle("Permissions Chart")
+				->setMaxValues(10);
+	```
 
 ## Math Functions Charts
 
@@ -519,30 +519,30 @@ The function is ```sin(x)```, the interval is ```[0, 10]``` and the ```x``` ampl
 
 - setInterval(required array $interval)
 
-    Sets the function / chart interval.
+	Sets the function / chart interval.
 
-    ```php
-    Charts::math('sin(x)', [0, 10], 0.2, 'line', 'highcharts')->setInterval([2, 8]);
-    ```
+	```php
+	Charts::math('sin(x)', [0, 10], 0.2, 'line', 'highcharts')->setInterval([2, 8]);
+	```
 
 - setAmplitude(required int $amplitude)
 
-    Sets the function amplitude between x points.
+	Sets the function amplitude between x points.
 
-    ```php
-    Charts::math('sin(x)', [0, 10], 0.2, 'line', 'highcharts')->setAmplitude(0.5);
-    ```
+	```php
+	Charts::math('sin(x)', [0, 10], 0.2, 'line', 'highcharts')->setAmplitude(0.5);
+	```
 
 - calculate()
 
-    Calculates the values / labels for the chart.
+	Calculates the valeus / labels for the chart.
 
-    **Note:** This function is called every time a modification is made in the chart function, interval or amplitude
-    so you don't need to call it every time you change the values. It's just an auxiliary function.
+	**Note:** This function is called every time a modification is made in the chart function, interval or amplitude
+	so you don't need to call it every time you change the values. It's just an auxiliary function.
 
-    ```php
-    Charts::math('sin(x)', [0, 10], 0.2, 'line', 'highcharts')->calculate();
-    ```
+	```php
+	Charts::math('sin(x)', [0, 10], 0.2, 'line', 'highcharts')->calculate();
+	```
 
 ## Charts Functions
 
@@ -559,44 +559,44 @@ The function is ```sin(x)```, the interval is ```[0, 10]``` and the ```x``` ampl
 
 - database(required mixed $object, optional string $type, optional string $library)
 
-    Returns a new database chart instance that extends the base one.
+	Returns a new database chart instance that extends the base one.
 
-    ```php
+	```php
     Charts::database(User::all());
     Charts::create(User::all(), 'line', 'highcharts');
     ```
 
 - realtime(required string $url, required int $interval, optional string $type, optional string $library)
 
-    Returns a new database chart instance that extends the base one.
+	Returns a new database chart instance that extends the base one.
 
-    ```php
+	```php
     Charts::realtime(url('/json/data'), 2000, 'gauge', 'google')
     ```
 
 - realtime(required string $function, required array $interval, required int $amplitude, optional string $type, optional string $library)
 
-    Returns a new math function chart instance that extends the base one.
+	Returns a new math function chart instance that extends the base one.
 
-    ```php
+	```php
     Charts::math('sin(x)', [0, 10], 0.2, 'line', 'highcharts');
     ```
 
 - assets(optional array $libraries)
 
-    Returns all the assets to generate the graphs.
+	Returns all the assets to generate the graphs.
 
-    To output only certain libraries, add an array to it with the libraries you want
+	To output only certain libraries, add an array to it with the libraries you want
 
-    ```php
-    <?php echo Charts::assets(); ?>
+	```php
+	<?php echo Charts::assets(); ?>
 
-    // Using blade
-    {!! Charts::assets() !!}
+	// Using blade
+	{!! Charts::assets() !!}
 
-    // Only certain libraries
-    {!! Charts::assets(['google', 'chartjs']) !!}
-    ```
+	// Only certain libraries
+	{!! Charts::assets(['google', 'chartjs']) !!}
+	```
 
 
 - libraries(optional string $type)
@@ -620,22 +620,22 @@ The function is ```sin(x)```, the interval is ```[0, 10]``` and the ```x``` ampl
   print_r(Charts::types());
 
   // Return all the chart types available for the highcharts library
-  print_r(Charts::types('highcharts'));
+  print_r(Charts::libraries('highcharts'));
   ```
 
 ## Available Chart Settings:
 
 - setGaugeStyle(required string $style)
 
-    Set the gauge style
+	Set the gauge style
 
-    *Default:* ```left```
+	*Default:* ```left```
 
-    *Available options:* ```left``` ```right``` ```center```
+	*Available options:* ```left``` ```right``` ```center```
 
-    ```php
-    Charts::create('gauge', 'google')->setGaugeStyle('right');
-    ```
+	```php
+	Charts::create('gauge', 'google')->setGaugeStyle('right');
+	```
 
 - setType(required string $type)
 
@@ -711,7 +711,7 @@ The function is ```sin(x)```, the interval is ```[0, 10]``` and the ```x``` ampl
 
 - setDimensions(required int $width, required int $height)
 
-  The chart dimensions (shortcut to set width, height with one function).
+  The chart dimensions (shortcut to set width, height with one funcion).
 
   ```php
   Charts::create('line', 'highcharts')->setHeight(1000, 500);
@@ -749,11 +749,11 @@ The function is ```sin(x)```, the interval is ```[0, 10]``` and the ```x``` ampl
 
   ```php
   Charts::create('pie', 'highcharts')
-    ->setTitle('My nice chart')
-    ->setLabels(['First', 'Second', 'Third'])
-    ->setValues([5,10,20])
-    ->setDimensions(1000,500)
-    ->setResponsive(false);
+  	->setTitle('My nice chart')
+  	->setLabels(['First', 'Second', 'Third'])
+  	->setValues([5,10,20])
+  	->setDimensions(1000,500)
+  	->setResponsive(false);
   ```
 
   ![Example Pie](https://i.gyazo.com/b61a0a5786a8f70daf61398d256366b8.png)
@@ -764,11 +764,11 @@ The function is ```sin(x)```, the interval is ```[0, 10]``` and the ```x``` ampl
 
   ```php
   Charts::create('donut', 'highcharts')
-    ->setTitle('My nice chart')
-    ->setLabels(['First', 'Second', 'Third'])
-    ->setValues([5,10,20])
-    ->setDimensions(1000,500)
-    ->setResponsive(false);
+  	->setTitle('My nice chart')
+  	->setLabels(['First', 'Second', 'Third'])
+  	->setValues([5,10,20])
+  	->setDimensions(1000,500)
+  	->setResponsive(false);
   ```
 
   ![Example Donut](https://i.gyazo.com/fecef4a102cb348d0f7f3681120a600f.png)
@@ -778,12 +778,12 @@ The function is ```sin(x)```, the interval is ```[0, 10]``` and the ```x``` ampl
 
   ```php
   Charts::create('line', 'highcharts')
-    ->setTitle('My nice chart')
-    ->setElementLabel('My nice label')
-    ->setLabels(['First', 'Second', 'Third'])
-    ->setValues([5,10,20])
-    ->setDimensions(1000,500)
-    ->setResponsive(false);
+  	->setTitle('My nice chart')
+  	->setElementLabel('My nice label')
+  	->setLabels(['First', 'Second', 'Third'])
+  	->setValues([5,10,20])
+  	->setDimensions(1000,500)
+  	->setResponsive(false);
   ```
 
   ![Example Line](https://i.gyazo.com/121736e3b8aa7f22ad17a7c0ceecac02.png)
@@ -792,12 +792,12 @@ The function is ```sin(x)```, the interval is ```[0, 10]``` and the ```x``` ampl
 
   ```php
   Charts::create('area', 'highcharts')
-    ->setTitle('My nice chart')
-    ->setElementLabel('My nice label')
-    ->setLabels(['First', 'Second', 'Third'])
-    ->setValues([5,10,20])
-    ->setDimensions(1000,500)
-    ->setResponsive(false);
+  	->setTitle('My nice chart')
+  	->setElementLabel('My nice label')
+  	->setLabels(['First', 'Second', 'Third'])
+  	->setValues([5,10,20])
+  	->setDimensions(1000,500)
+  	->setResponsive(false);
   ```
 
   ![Example Area](https://i.gyazo.com/f6c500cf9bfc2e449d64ee19b7bb809c.png)
@@ -809,12 +809,12 @@ The function is ```sin(x)```, the interval is ```[0, 10]``` and the ```x``` ampl
 
   ```php
   Charts::create('bar', 'highcharts')
-    ->setTitle('My nice chart')
-    ->setElementLabel('My nice label')
-    ->setLabels(['First', 'Second', 'Third'])
-    ->setValues([5,10,20])
-    ->setDimensions(1000,500)
-    ->setResponsive(false);
+  	->setTitle('My nice chart')
+  	->setElementLabel('My nice label')
+  	->setLabels(['First', 'Second', 'Third'])
+  	->setValues([5,10,20])
+  	->setDimensions(1000,500)
+  	->setResponsive(false);
   ```
 
   ![Example Bar](https://i.gyazo.com/94ada1aac091ef3cbc84433a3425a9aa.png)
@@ -827,75 +827,75 @@ The function is ```sin(x)```, the interval is ```[0, 10]``` and the ```x``` ampl
 
   ```php
   Charts::create('geo', 'highcharts')
-    ->setTitle('My nice chart')
-    ->setElementLabel('My nice label')
-    ->setLabels(['ES', 'FR', 'RU'])
-    ->setColors(['#C5CAE9', '#283593'])
-    ->setValues([5,10,20])
-    ->setDimensions(1000,500)
-    ->setResponsive(false);
+  	->setTitle('My nice chart')
+  	->setElementLabel('My nice label')
+  	->setLabels(['ES', 'FR', 'RU'])
+  	->setColors(['#C5CAE9', '#283593'])
+  	->setValues([5,10,20])
+  	->setDimensions(1000,500)
+  	->setResponsive(false);
   ```
 
   ![Example Geo](https://i.gyazo.com/f7a76582e80912864c6cfb23f688e43e.png)
 
   ### Gauge
 
-  Note: You either need 1 value or 3 following this standard: ```[actualValue, minValue, maxValue]```
+  Note: You either need 1 value or 3 following this standar: ```[actualValue, minValue, maxValue]```
 
   ```php
   Charts::create('gauge', 'canvas-gauges')
-    ->setTitle('My nice chart')
-    ->setElementLabel('My nice label')
-    ->setValues([65,0,100])
-    ->setResponsive(false)
-    ->setHeight(300)
-    ->setWidth(0);
+  	->setTitle('My nice chart')
+  	->setElementLabel('My nice label')
+  	->setValues([65,0,100])
+  	->setResponsive(false)
+  	->setHeight(300)
+  	->setWidth(0);
   ```
 
   ![Example Gauge](https://i.gyazo.com/a9bc88c6550d39a15b5a686ea66df0ea.png)
 
   ### Temperature
 
-  Note: You either need 1 value or 3 following this standard: ```[actualValue, minValue, maxValue]```
+  Note: You either need 1 value or 3 following this standar: ```[actualValue, minValue, maxValue]```
 
   ```php
   Charts::create('temp', 'canvas-gauges')
-    ->setTitle('My nice chart')
-    ->setElementLabel('My nice label')
-    ->setValues([65,0,100])
-    ->setResponsive(false)
-    ->setHeight(300)
-    ->setWidth(0);
+  	->setTitle('My nice chart')
+  	->setElementLabel('My nice label')
+  	->setValues([65,0,100])
+  	->setResponsive(false)
+  	->setHeight(300)
+  	->setWidth(0);
   ```
 
   ![Example Temperature](https://i.gyazo.com/1a8f264ffd9746da06d67c3624eaac81.png)
 
   ### Percentage
 
-  Note: You either need 1 value or 3 following this standard: ```[actualValue, minValue, maxValue]```
+  Note: You either need 1 value or 3 following this standar: ```[actualValue, minValue, maxValue]```
 
   ```php
   Charts::create('percentage', 'justgage')
-    ->setTitle('My nice chart')
-    ->setElementLabel('My nice label')
-    ->setValues([65,0,100])
-    ->setResponsive(false)
-    ->setHeight(300)
-    ->setWidth(0);
+  	->setTitle('My nice chart')
+  	->setElementLabel('My nice label')
+  	->setValues([65,0,100])
+  	->setResponsive(false)
+  	->setHeight(300)
+  	->setWidth(0);
   ```
 
   ![Example Percentage](https://i.gyazo.com/d39af8739c12eae6558046aa2031e6c0.png)
 
   ### Progressbar
 
-  Note: You either need 1 value or 3 following this standard: ```[actualValue, minValue, maxValue]```
+  Note: You either need 1 value or 3 following this standar: ```[actualValue, minValue, maxValue]```
 
   ```php
   Charts::create('progressbar', 'progressbarjs')
-    ->setValues([65,0,100])
-    ->setResponsive(false)
-    ->setHeight(50)
-    ->setWidth(0);
+  	->setValues([65,0,100])
+  	->setResponsive(false)
+  	->setHeight(50)
+  	->setWidth(0);
   ```
 
   ![Example Progressbar](https://i.gyazo.com/ecd6a20344939ab75767739d32780104.png)
