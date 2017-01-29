@@ -42,11 +42,12 @@ class Multi extends Chart
      * @param array $values
      * @param int   $dataset
      */
-    public function dataset($elementLabel, $values)
+    public function dataset($elementLabel, $values, $fillColor = true)
     {
         $this->datasets[] = [
             'label' => $elementLabel,
             'values' => $values,
+        	'fillColor' => $fillColor
         ];
 
         return $this;

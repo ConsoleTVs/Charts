@@ -36,6 +36,8 @@ class Chart
     protected $suffix;
     public $container;
     public $credits = true;
+    
+    public $xTickInterval;
 
     /**
      * Create a new chart instance.
@@ -327,4 +329,12 @@ class Chart
     {
         return substr(str_shuffle(str_repeat($x = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length / strlen($x)))), 1, $length);
     }
+    
+    public function xTickInterval($xTickInterval)
+    {
+    	$this->xTickInterval = $xTickInterval;
+    
+    	return $this;
+    }
 }
+

@@ -7,26 +7,24 @@
                 @include('charts::_partials.dimension.js2')
             },
             @if($model->title)
-                title: {
-                    text:  "{{ $model->title }}",
-                    x: -20 //center
-                },
+			title: {
+                text:  "{{ $model->title }}",
+            	x: -20 //center
+            },
             @endif
             @if(!$model->credits)
-                credits: {
-                    enabled: false
-                },
-            @endif    
-            xAxis: {
-                categories: [
-                    @foreach($model->labels as $label)
-                        "{{ $label }}",
-                    @endforeach
-                ]
+            credits: {
+            	enabled: false
             },
-            yAxis: {
-                title: {
-                    text: "{{ $model->element_label }}"
+            @endif    
+            xAxis: {                
+            	@if($model->xTickInterval)
+            	tickInterval: {{ $model->xTickInterval }},
+            	@endif            	
+            	labels: {
+                    formatter: function () {
+                        return this.value;
+                    }
                 },
                 plotLines: [{
                     value: 0,
@@ -48,11 +46,14 @@
                         @if($model->colors && count($model->colors) > $i)
                             color: "{{ $model->colors[$i] }}",
                         @endif
-                        data: [
-                            @foreach($model->datasets[$i]['values'] as $dta)
-                                {{ $dta }},
+ 		                	@if(!$model->datasets[$i]['fillColor'])
+ 		            			fillColor: {},
+ 		            		@endif
+						data: [
+                        	@foreach($model->datasets[$i]['values'] as $dta)
+                            	{{ $dta }},
                             @endforeach
-                        ]
+                       ]
                     },
                 @endfor
             ]
