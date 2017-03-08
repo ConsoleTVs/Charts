@@ -460,7 +460,7 @@ class Chart
      */
     public function render()
     {
-        $this->id = $this->container ? $this->container : $this->randomString();
+        $this->id = $this->container ? $this->container : str_random(10);
 
         if (! $this->labels && ! $this->values) {
             $this->labels = ['No Data Set'];
@@ -552,11 +552,11 @@ class Chart
      * Return a random string.
      *
      * @param int $length
-     *
+     * @deprecated
      * @return string
      */
     public function randomString($length = 10)
     {
-        return substr(str_shuffle(str_repeat($x = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length / strlen($x)))), 1, $length);
+        return str_random($length);
     }
 }
