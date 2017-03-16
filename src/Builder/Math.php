@@ -108,10 +108,10 @@ class Math extends Chart
         $this->element_label = $this->element_label." - $function";
 
         // Reset the values / labels
-        $this->values = [];
-        $this->labels = [];
+        $this->values = [ ];
+        $this->labels = [ ];
 
-        for ($i = $interval[0]; $i <= $interval[1]; $i = $i + $amplitude) {
+        for ($i = $interval[ 0 ]; $i <= $interval[ 1 ]; $i = $i + $amplitude) {
             $result = Parser::solve($function, round($i, 2));
 
             array_push($this->values, $result);

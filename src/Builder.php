@@ -121,11 +121,11 @@ class Builder
     {
         $directories = File::directories(__DIR__.'/../resources/views');
 
-        $results = [];
+        $results = [ ];
         foreach ($directories as $directory) {
             // type was not defined...
-            if (! $type) {
-                return collect($directories)->map(function ($item, $key) {
+            if (!$type) {
+                return collect($directories)->map(function($item, $key) {
                     return basename($item);
                 })->toArray();
             }
@@ -133,7 +133,7 @@ class Builder
             // type was defined...
             foreach (File::allFiles($directory) as $library) {
                 if (str_contains($library, $type)) {
-                    $results[] = basename($directory);
+                    $results[ ] = basename($directory);
                 }
             }
         }
@@ -154,7 +154,7 @@ class Builder
         if ($library) {
             $files = File::allFiles(__DIR__."/../resources/views/$library");
 
-            return collect($files)->map(function ($item, $key) {
+            return collect($files)->map(function($item, $key) {
                 return str_replace('.blade.php', null, $item->getFileName());
             })->toArray();
         }
@@ -162,45 +162,15 @@ class Builder
         // no library defined...
         $libraries = File::directories(__DIR__.'/../resources/views');
 
-        $results = [];
+        $results = [ ];
         foreach ($libraries as $library) {
             foreach (File::allFiles($library) as $type) {
-                $results[] = str_replace('.blade.php', null, $type->getFileName());
+                $results[ ] = str_replace('.blade.php', null, $type->getFileName());
             }
         }
 
         return array_unique($results);
     }
-
-      /**
-       * Return the library styles.
-       *
-       * @param array  $libraries
-       *
-       * @return string
-       */
-      public function styles($libraries = [])
-      {
-          $styles = static::getAssets($libraries, 'styles');
-          $styles .= view('charts::_partials.loader.css');
-
-          return $styles;
-      }
-
-       /**
-        * Return the library scripts.
-        *
-        * @param array  $libraries
-        *
-        * @return string
-        */
-       public function scripts($libraries = [])
-       {
-           $scripts = static::getAssets($libraries, 'scripts');
-           $scripts .= view('charts::_partials.loader.js');
-
-           return $scripts;
-       }
 
         /**
          * Return the library styles.
@@ -209,7 +179,37 @@ class Builder
          *
          * @return string
          */
-        public function assets($libraries = [])
+        public function styles($libraries = [])
+        {
+            $styles = static::getAssets($libraries, 'styles');
+            $styles .= view('charts::_partials.loader.css');
+
+            return $styles;
+        }
+
+        /**
+         * Return the library scripts.
+         *
+         * @param array  $libraries
+         *
+         * @return string
+         */
+        public function scripts($libraries = [])
+        {
+            $scripts = static::getAssets($libraries, 'scripts');
+            $scripts .= view('charts::_partials.loader.js');
+
+            return $scripts;
+        }
+
+        /**
+         * Return the library styles.
+         *
+         * @param array  $libraries
+         *
+         * @return string
+         */
+        public function assets($libraries = [ ])
         {
             $assets = static::styles($libraries);
             $assets .= static::scripts($libraries);
@@ -225,10 +225,10 @@ class Builder
      *
      * @return string
      */
-    private static function getAssets($libraries = [], $type = [])
+    private static function getAssets($libraries = [ ], $type = [ ])
     {
-        if (! $libraries) {
-            $libraries = [];
+        if (!$libraries) {
+            $libraries = [ ];
             foreach (config('charts.assets') as $key => $value) {
                 array_push($libraries, $key);
             }
@@ -241,23 +241,23 @@ class Builder
         }
 
         if ($type) {
-            $final_assets = collect($assets)->map(function ($value, $key) use ($libraries, $type) {
+            $final_assets = collect($assets)->map(function($value, $key) use ($libraries, $type) {
                 if (in_array($key, $libraries) && array_key_exists($type, $value)) {
-                    return $value[$type];
+                    return $value[ $type ];
                 } else {
                     return;
                 }
-            })->reject(function ($value) {
+            })->reject(function($value) {
                 return $value === null;
             })->toArray();
         } else {
-            $final_assets = collect($assets)->map(function ($value, $key) use ($libraries) {
+            $final_assets = collect($assets)->map(function($value, $key) use ($libraries) {
                 if (in_array($key, $libraries)) {
                     return $value;
                 } else {
                     return;
                 }
-            })->reject(function ($value) {
+            })->reject(function($value) {
                 return $value === null;
             })->toArray();
         }
@@ -275,7 +275,7 @@ class Builder
      */
     private static function buildIncludeTags(array $data)
     {
-        return collect(array_flatten($data))->map(function ($item) {
+        return collect(array_flatten($data))->map(function($item) {
             if (ends_with($item, '.css')) {
                 return '<link rel="stylesheet" href="'.$item.'">';
             }
