@@ -32,7 +32,7 @@ class ChartsServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/../config/charts.php', 'charts');
 
-        $this->app->singleton(Builder::class, function ($app) {
+        $this->app->singleton(Builder::class, function($app) {
             return new Builder();
         });
     }
@@ -44,7 +44,7 @@ class ChartsServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return [Builder::class];
+        return [ Builder::class ];
     }
 
     private function registerBladeDirectives()
@@ -54,7 +54,7 @@ class ChartsServiceProvider extends ServiceProvider
          *
          * Usage: @explode($delimiter, $string)
          */
-        Blade::directive('explode', function ($argumentString) {
+        Blade::directive('explode', function($argumentString) {
             list($delimiter, $string) = $this->getArguments($argumentString);
 
             return "<?php echo explode({$delimiter}, {$string}); ?>";
@@ -65,7 +65,7 @@ class ChartsServiceProvider extends ServiceProvider
          *
          * Usage: @implode($delimiter, $array)
          */
-        Blade::directive('implode', function ($argumentString) {
+        Blade::directive('implode', function($argumentString) {
             list($delimiter, $array) = $this->getArguments($argumentString);
 
             return "<?php echo implode({$delimiter}, {$array}); ?>";
@@ -76,14 +76,14 @@ class ChartsServiceProvider extends ServiceProvider
          *
          * Usage: @set($name, value)
          */
-        Blade::directive('set', function ($argumentString) {
+        Blade::directive('set', function($argumentString) {
             list($name, $value) = $this->getArguments($argumentString);
 
-            if (starts_with($name, ["'", '"']) || ends_with($name, ["'", '"'])) {
+            if (starts_with($name, [ "'", '"' ]) || ends_with($name, [ "'", '"' ])) {
                 $name = substr($name, 1, -1);
             }
 
-            if (starts_with($value, ["'", '"']) || ends_with($value, ["'", '"'])) {
+            if (starts_with($value, [ "'", '"' ]) || ends_with($value, [ "'", '"' ])) {
                 $value = substr($value, 1, -1);
             }
 
@@ -100,6 +100,6 @@ class ChartsServiceProvider extends ServiceProvider
      */
     private function getArguments($argumentString)
     {
-        return explode(', ', str_replace(['(', ')'], '', $argumentString));
+        return explode(', ', str_replace([ '(', ')' ], '', $argumentString));
     }
 }

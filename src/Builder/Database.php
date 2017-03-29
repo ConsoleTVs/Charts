@@ -31,7 +31,7 @@ class Database extends Chart
 
     public $aggregate_column = null;
     public $aggregate_type = null;
-    public $value_data = [];
+    public $value_data = [ ];
 
     /**
      * Create a new database instance.
@@ -147,8 +147,8 @@ class Database extends Chart
      */
     public function groupByHour($day = null, $month = null, $year = null, $fancy = false)
     {
-        $labels = [];
-        $values = [];
+        $labels = [ ];
+        $values = [ ];
 
         $day = $day ? $day : date('d');
         $month = $month ? $month : date('m');
@@ -189,8 +189,8 @@ class Database extends Chart
      */
     public function groupByDay($month = null, $year = null, $fancy = false)
     {
-        $labels = [];
-        $values = [];
+        $labels = [ ];
+        $values = [ ];
 
         $month = $month ? $month : date('m');
         $year = $year ? $year : date('Y');
@@ -229,8 +229,8 @@ class Database extends Chart
      */
     public function groupByMonth($year = null, $fancy = false)
     {
-        $labels = [];
-        $values = [];
+        $labels = [ ];
+        $values = [ ];
 
         $year = $year ? $year : date('Y');
 
@@ -267,8 +267,8 @@ class Database extends Chart
      */
     public function groupByYear($number = 4)
     {
-        $labels = [];
-        $values = [];
+        $labels = [ ];
+        $values = [ ];
 
         for ($i = 0; $i < $number; $i++) {
             if ($i == 0) {
@@ -300,17 +300,17 @@ class Database extends Chart
      *
      * @return Database
      */
-    public function groupBy($column, $relationColumn = null, array $labelsMapping = [])
+    public function groupBy($column, $relationColumn = null, array $labelsMapping = [ ])
     {
-        $labels = [];
-        $values = [];
+        $labels = [ ];
+        $values = [ ];
 
         if ($relationColumn && strpos($relationColumn, '.') !== false) {
             $relationColumn = explode('.', $relationColumn);
         }
 
         foreach ($this->data->groupBy($column) as $data) {
-            $label = $data[0];
+            $label = $data[ 0 ];
 
             if (is_null($relationColumn)) {
                 $label = $label->$column;
@@ -320,11 +320,11 @@ class Database extends Chart
                         $label = $label->$boz;
                     }
                 } else {
-                    $label = $data[0]->$relationColumn;
+                    $label = $data[ 0 ]->$relationColumn;
                 }
             }
 
-            array_push($labels, array_key_exists($label, $labelsMapping) ? $labelsMapping[$label] : $label);
+            array_push($labels, array_key_exists($label, $labelsMapping) ? $labelsMapping[ $label ] : $label);
             array_push($values, count($data));
         }
 
@@ -344,8 +344,8 @@ class Database extends Chart
      */
     public function lastByDay($number = 7, $fancy = false)
     {
-        $labels = [];
-        $values = [];
+        $labels = [ ];
+        $values = [ ];
 
         for ($i = 0; $i < $number; $i++) {
             $date = $i == 0 ? date('d-m-Y') : date('d-m-Y', strtotime("-$i Day"));
@@ -371,15 +371,29 @@ class Database extends Chart
      */
     public function lastByMonth($number = 6, $fancy = false)
     {
-        $labels = [];
-        $values = [];
+        $labels = [ ];
+        $values = [ ];
+        $previousDate = null;
+        $day = 1;
 
         for ($i = 0; $i < $number; $i++) {
             $date = $i == 0 ? date('m-Y') : date('m-Y', strtotime("-$i Month"));
+
+            // If the previous date equals the newly calculated date, move the interval by a day and try again.
+            // @see edge case 29th of March to 29th of February and 31-03-2017 to 30-11-2016. Put a limit just in case
+            // it breaks something.
+            while ($date == $previousDate && $day < 4) {
+                $date = $i == 0 ? date('m-Y', time() - $day * 86400) : date('m-Y', strtotime("-$i Month") - 86400 * $day);
+                $day++;
+            }
             $date_f = $fancy ? date($this->month_format, strtotime("01-$date")) : $date;
             array_push($labels, $date_f);
             $value = $this->getCheckDateValue($date, 'm-Y', $date_f);
             array_push($values, $value);
+
+            // Set the checks for the next round.
+            $previousDate = $date;
+            $day = 1;
         }
 
         $this->labels(array_reverse($labels));
@@ -414,13 +428,13 @@ class Database extends Chart
         $data = $this->data;
         if ($this->preaggregated) {
             // Since the column has been preaggregated, we only need one record that matches the search
-            $valueData = $data->first(function ($value) use ($checkDate, $date_column, $formatToCheck) {
+            $valueData = $data->first(function($value) use ($checkDate, $date_column, $formatToCheck) {
                 return $checkDate == date($formatToCheck, strtotime($value->$date_column));
             });
             $value = $valueData !== null ? $valueData->aggregate : 0;
         } else {
             // Set the data represented. Return the relevant value.
-            $valueData = $data->filter(function ($value) use ($checkDate, $date_column, $formatToCheck) {
+            $valueData = $data->filter(function($value) use ($checkDate, $date_column, $formatToCheck) {
                 return $checkDate == date($formatToCheck, strtotime($value->$date_column));
             });
 
@@ -432,7 +446,7 @@ class Database extends Chart
             }
 
             // Store the datasets by label.
-            $this->value_data[$label] = $valueData;
+            $this->value_data[ $label ] = $valueData;
         }
 
         return $value;

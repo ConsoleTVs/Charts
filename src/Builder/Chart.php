@@ -59,8 +59,8 @@ class Chart
         $this->height = config('charts.default.height');
         $this->width = config('charts.default.width');
         $this->element_label = config('charts.default.element_label');
-        $this->labels = [];
-        $this->values = [];
+        $this->labels = [ ];
+        $this->values = [ ];
         $this->colors = config('charts.default.colors');
         $this->suffix = '';
         $this->container = '';
@@ -461,14 +461,14 @@ class Chart
     {
         $this->id = $this->container ? $this->container : $this->randomString();
 
-        if (! $this->labels && ! $this->values) {
-            $this->labels = ['No Data Set'];
-            $this->values = [0];
-        } elseif (! $this->values && $this->labels) {
+        if (!$this->labels && !$this->values) {
+            $this->labels = [ 'No Data Set' ];
+            $this->values = [ 0 ];
+        } elseif (!$this->values && $this->labels) {
             foreach ($this->labels as $l) {
                 array_push($this->values, 0);
             }
-        } elseif ($this->values && ! $this->labels) {
+        } elseif ($this->values && !$this->labels) {
             $i = 0;
             foreach ($this->values as $v) {
                 array_push($this->labels, "Unknown $i");
@@ -485,22 +485,22 @@ class Chart
             }
         }
 
-        if (! $this->colors) {
-            $this->colors = ['#000000'];
+        if (!$this->colors) {
+            $this->colors = [ '#000000' ];
             // Set the template colors
             $templates = config('charts.templates');
-            if ($this->template && array_key_exists($this->template, $templates) && $colors = $templates[$this->template]) {
+            if ($this->template && array_key_exists($this->template, $templates) && $colors = $templates[ $this->template ]) {
                 $this->colors = $colors;
             }
         }
 
-        $ds = $this->suffix == 'multi' ? count($this->datasets) : [];
+        $ds = $this->suffix == 'multi' ? count($this->datasets) : [ ];
         $cv = count($this->values);
         $cc = count($this->colors);
 
         if ($this->one_color) {
-            $color = $this->colors[0];
-            $this->colors = [];
+            $color = $this->colors[ 0 ];
+            $this->colors = [ ];
             foreach ($this->values as $v) {
                 array_push($this->colors, $color);
             }
@@ -520,7 +520,7 @@ class Chart
                     if ($i == $max) {
                         $i = 0;
                     }
-                    array_push($this->colors, $this->colors[$i]);
+                    array_push($this->colors, $this->colors[ $i ]);
                     $i++;
                 }
             }
@@ -538,7 +538,7 @@ class Chart
         $img_url = 'http://www.iconsfind.com/wp-content/uploads/2015/12/20151208_56663ed552e5d.png';
 
         $error = "<div><div style='position: relative;";
-        if (! $this->responsive) {
+        if (!$this->responsive) {
             $error .= $this->height ? 'height: '.$this->height.'px' : '';
             $error .= $this->width ? 'width: '.$this->width.'px' : '';
         }

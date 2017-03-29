@@ -21,7 +21,7 @@ class MultiDatabase extends Multi
     /**
      * @var Database[]
      */
-    public $datas = [];
+    public $datas = [ ];
     public $date_column = 'created_at';
     public $date_format = 'l dS M, Y';
     public $month_format = 'F, Y';
@@ -51,8 +51,8 @@ class MultiDatabase extends Multi
      */
     public function dataset($element_label, $data)
     {
-        $this->datas[$element_label] = new Database($data);
-        $this->datas[$element_label]->dateColumn($this->date_column)
+        $this->datas[ $element_label ] = new Database($data);
+        $this->datas[ $element_label ]->dateColumn($this->date_column)
             ->dateFormat($this->date_format)
             ->monthFormat($this->month_format)
             ->preaggregated($this->preaggregated)
@@ -72,7 +72,7 @@ class MultiDatabase extends Multi
     {
         $this->date_column = $column;
         foreach ($this->datas as $element_label => $data) {
-            $this->datas[$element_label]->dateColumn($this->date_column);
+            $this->datas[ $element_label ]->dateColumn($this->date_column);
         }
 
         return $this;
@@ -89,7 +89,7 @@ class MultiDatabase extends Multi
     {
         $this->date_format = $format;
         foreach ($this->datas as $element_label => $data) {
-            $this->datas[$element_label]->dateFormat($this->date_format);
+            $this->datas[ $element_label ]->dateFormat($this->date_format);
         }
 
         return $this;
@@ -106,7 +106,7 @@ class MultiDatabase extends Multi
     {
         $this->month_format = $format;
         foreach ($this->datas as $element_label => $data) {
-            $this->datas[$element_label]->monthFormat($this->month_format);
+            $this->datas[ $element_label ]->monthFormat($this->month_format);
         }
 
         return $this;
@@ -123,7 +123,7 @@ class MultiDatabase extends Multi
     {
         $this->preaggregated = $preaggregated;
         foreach ($this->datas as $element_label => $data) {
-            $this->datas[$element_label]->preaggregated($this->preaggregated);
+            $this->datas[ $element_label ]->preaggregated($this->preaggregated);
         }
 
         return $this;
@@ -142,7 +142,7 @@ class MultiDatabase extends Multi
         $this->aggregate_column = $aggregateColumn;
         $this->aggregate_type = $aggregateType;
         foreach ($this->datas as $element_label => $data) {
-            $this->datas[$element_label]->aggregateColumn($this->aggregate_column, $this->aggregate_type);
+            $this->datas[ $element_label ]->aggregateColumn($this->aggregate_column, $this->aggregate_type);
         }
 
         return $this;
@@ -161,7 +161,7 @@ class MultiDatabase extends Multi
     public function groupByHour($day = null, $month = null, $year = null, $fancy = false)
     {
         // Reset the datasets to avoid overlapping
-        $this->datasets = [];
+        $this->datasets = [ ];
 
         foreach ($this->datas as $element_label => $data) {
             $data->groupByHour($day, $month, $year, $fancy);
@@ -185,7 +185,7 @@ class MultiDatabase extends Multi
     public function groupByDay($month = null, $year = null, $fancy = false)
     {
         // Reset the datasets to avoid overlapping
-        $this->datasets = [];
+        $this->datasets = [ ];
 
         foreach ($this->datas as $element_label => $data) {
             $data->groupByDay($month, $year, $fancy);
@@ -208,7 +208,7 @@ class MultiDatabase extends Multi
     public function groupByMonth($year = null, $fancy = false)
     {
         // Reset the datasets to avoid overlapping
-        $this->datasets = [];
+        $this->datasets = [ ];
 
         foreach ($this->datas as $element_label => $data) {
             $data->groupByMonth($year, $fancy);
@@ -230,7 +230,7 @@ class MultiDatabase extends Multi
     public function groupByYear($number = 4)
     {
         // Reset the datasets to avoid overlapping
-        $this->datasets = [];
+        $this->datasets = [ ];
 
         foreach ($this->datas as $element_label => $data) {
             $data->groupByYear($number);
@@ -251,10 +251,10 @@ class MultiDatabase extends Multi
      *
      * @return MultiDatabase
      */
-    public function groupBy($column, $relationColumn = null, array $labelsMapping = [])
+    public function groupBy($column, $relationColumn = null, array $labelsMapping = [ ])
     {
         // Reset the datasets to avoid overlapping
-        $this->datasets = [];
+        $this->datasets = [ ];
 
         foreach ($this->datas as $element_label => $data) {
             $data->groupBy($column, $relationColumn, $labelsMapping);
@@ -277,7 +277,7 @@ class MultiDatabase extends Multi
     public function lastByDay($number = 7, $fancy = false)
     {
         // Reset the datasets to avoid overlapping
-        $this->datasets = [];
+        $this->datasets = [ ];
 
         foreach ($this->datas as $element_label => $data) {
             $data->lastByDay($number, $fancy);
@@ -300,7 +300,7 @@ class MultiDatabase extends Multi
     public function lastByMonth($number = 6, $fancy = false)
     {
         // Reset the datasets to avoid overlapping
-        $this->datasets = [];
+        $this->datasets = [ ];
 
         foreach ($this->datas as $element_label => $data) {
             $data->lastByMonth($number, $fancy);
