@@ -373,13 +373,27 @@ class Database extends Chart
     {
         $labels = [ ];
         $values = [ ];
+        $previousDate = null;
+        $day = 1;
 
         for ($i = 0; $i < $number; $i++) {
             $date = $i == 0 ? date('m-Y') : date('m-Y', strtotime("-$i Month"));
+
+            // If the previous date equals the newly calculated date, move the interval by a day and try again.
+            // @see edge case 29th of March to 29th of February and 31-03-2017 to 30-11-2016. Put a limit just in case
+            // it breaks something.
+            while ($date == $previousDate && $day < 4) {
+                $date = $i == 0 ? date('m-Y', time() - $day * 86400) : date('m-Y', strtotime("-$i Month") - 86400 * $day);
+                $day++;
+            }
             $date_f = $fancy ? date($this->month_format, strtotime("01-$date")) : $date;
             array_push($labels, $date_f);
             $value = $this->getCheckDateValue($date, 'm-Y', $date_f);
             array_push($values, $value);
+
+            // Set the checks for the next round.
+            $previousDate = $date;
+            $day = 1;
         }
 
         $this->labels(array_reverse($labels));
