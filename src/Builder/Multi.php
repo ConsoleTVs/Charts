@@ -20,6 +20,10 @@ class Multi extends Chart
 {
     public $datasets;
 
+    public $plotBandsFrom;
+    public $plotBandsTo;
+    public $plotBandsColor;
+
     /**
      * Create a new multi chart instance.
      *
@@ -31,6 +35,10 @@ class Multi extends Chart
         parent::__construct($type, $library);
 
         $this->suffix = 'multi';
+
+        $this->plotBandsFrom = config('charts.default.plotBandsFrom');
+        $this->plotBandsTo = config('charts.default.plotBandsTo');
+        $this->plotBandsColor = config('charts.default.plotBandsColor');
     }
 
     /**
@@ -47,6 +55,48 @@ class Multi extends Chart
             'label' => $element_label,
             'values' => $values,
         ];
+
+        return $this;
+    }
+
+    /**
+     * Set chart plot bands from.
+     *
+     * @param float $from
+     *
+     * @return Chart
+     */
+    public function plotBandsFrom($from)
+    {
+        $this->plotBandsFrom = $from;
+
+        return $this;
+    }
+
+    /**
+     * Set chart plot bands to.
+     *
+     * @param float $to
+     *
+     * @return Chart
+     */
+    public function plotBandsTo($to)
+    {
+        $this->plotBandsTo = $to;
+
+        return $this;
+    }
+
+    /**
+     * Set chart plot bands background color.
+     *
+     * @param string $color
+     *
+     * @return Chart
+     */
+    public function plotBandsColor($color)
+    {
+        $this->plotBandsColor = $color;
 
         return $this;
     }
