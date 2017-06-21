@@ -62,13 +62,13 @@ class Multi extends Chart
     /**
      * Set chart plot bands from.
      *
-     * @param float $from
+     * @param float $plotBandsFrom
      *
      * @return Chart
      */
-    public function plotBandsFrom($from)
+    public function plotBandsFrom($plotBandsFrom)
     {
-        $this->plotBandsFrom = $from;
+        $this->plotBandsFrom = $plotBandsFrom;
 
         return $this;
     }
@@ -76,13 +76,13 @@ class Multi extends Chart
     /**
      * Set chart plot bands to.
      *
-     * @param float $to
+     * @param float $plotBandsTo
      *
      * @return Chart
      */
-    public function plotBandsTo($to)
+    public function plotBandsTo($plotBandsTo)
     {
-        $this->plotBandsTo = $to;
+        $this->plotBandsTo = $plotBandsTo;
 
         return $this;
     }
