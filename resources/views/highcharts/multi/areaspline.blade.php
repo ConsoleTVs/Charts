@@ -24,9 +24,9 @@
                     @endforeach
                 ],
                 plotBands: [{ // visualize the weekend
-                    from: 4.5,
-                    to: 6.5,
-                    color: 'rgba(68, 170, 213, .2)'
+                    from: {{ $model->plotBandsFrom }},
+                    to: {{ $model->plotBandsTo }},
+                    color: "{{ $model->plotBandsColor }}"
                 }]
             },
             yAxis: {
