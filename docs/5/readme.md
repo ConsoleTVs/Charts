@@ -164,22 +164,22 @@ Charts::create('line', 'highcharts')
 
 ## Multi Datasets Charts {#multi-dataset-charts}
 
-| Multi Dataset Charts | line | area | bar | pie | donut | geo | gauge | temp | percentage | progressbar | areaspline  | scatter |
-|----------------------|------|------|-----|-----|-------|-----|-------|------|------------|-------------|-------------|---------|
-| echarts              | x    | x    | x   | -   | -     | -   | -     | -    | -          | -           | -           | -       |
-| chartjs              | x    | x    | x   | -   | -     | -   | -     | -    | -          | -           | -           | -       |
-| highcharts           | x    | x    | x   | -   | -     | -   | -     | -    | -          | -           | x           | -       |
-| google               | x    | x    | x   | -   | -     | -   | -     | -    | -          | -           | -           | -       |
-| material             | x    | -    | x   | -   | -     | -   | -     | -    | -          | -           | -           | -       |
-| chartist             | x    | x    | x   | -   | -     | -   | -     | -    | -          | -           | -           | -       |
-| fusioncharts         | x    | x    | x   | -   | -     | -   | -     | -    | -          | -           | -           | -       |
-| morris               | x    | x    | x   | -   | -     | -   | -     | -    | -          | -           | -           | -       |
-| plottablejs          | x    | x    | x   | -   | -     | -   | -     | -    | -          | -           | -           | -       |
-| minimalist           | x    | x    | x   | -   | -     | -   | -     | -    | -          | -           | -           | -       |
-| c3                   | x    | x    | x   | -   | -     | -   | -     | -    | -          | -           | -           | -       |
-| canvas-gauges        | -    | -    | -   | -   | -     | -   | -     | -    | -          | -           | -           | -       |
-| justgage             | -    | -    | -   | -   | -     | -   | -     | -    | -          | -           | -           | -       |
-| progressbarjs        | -    | -    | -   | -   | -     | -   | -     | -    | -          | -           | -           | -       |
+| Multi Dataset Charts | line | area | bar | pie | donut | geo | gauge | temp | percentage | progressbar |    spline    | areaspline  | scatter |
+|----------------------|------|------|-----|-----|-------|-----|-------|------|------------|-------------|--------------|-------------|---------|
+| echarts              | x    | x    | x   | -   | -     | -   | -     | -    | -          | -           | -            | -           | -       |
+| chartjs              | x    | x    | x   | -   | -     | -   | -     | -    | -          | -           | -            | -           | -       |
+| highcharts           | x    | x    | x   | -   | -     | -   | -     | -    | -          | -           | x            | x           | -       |
+| google               | x    | x    | x   | -   | -     | -   | -     | -    | -          | -           | -            | -           | -       |
+| material             | x    | -    | x   | -   | -     | -   | -     | -    | -          | -           | -            | -           | -       |
+| chartist             | x    | x    | x   | -   | -     | -   | -     | -    | -          | -           | -            | -           | -       |
+| fusioncharts         | x    | x    | x   | -   | -     | -   | -     | -    | -          | -           | -            | -           | -       |
+| morris               | x    | x    | x   | -   | -     | -   | -     | -    | -          | -           | -            | -           | -       |
+| plottablejs          | x    | x    | x   | -   | -     | -   | -     | -    | -          | -           | -            | -           | -       |
+| minimalist           | x    | x    | x   | -   | -     | -   | -     | -    | -          | -           | -            | -           | -       |
+| c3                   | x    | x    | x   | -   | -     | -   | -     | -    | -          | -           | -            | -           | -       |
+| canvas-gauges        | -    | -    | -   | -   | -     | -   | -     | -    | -          | -           | -            | -           | -       |
+| justgage             | -    | -    | -   | -   | -     | -   | -     | -    | -          | -           | -            | -           | -       |
+| progressbarjs        | -    | -    | -   | -   | -     | -   | -     | -    | -          | -           | -            | -           | -       |
 
 To create multi-dataset charts simply add the values using the ```setDataset()``` function!
 
