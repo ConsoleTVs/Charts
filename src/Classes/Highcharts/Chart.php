@@ -2,7 +2,6 @@
 
 namespace ConsoleTVs\Charts\Classes\Highcharts;
 
-use Illuminate\Support\Collection;
 use ConsoleTVs\Charts\Classes\BaseChart;
 use ConsoleTVs\Charts\Features\Highcharts\Chart as ChartFeatures;
 
@@ -20,7 +19,7 @@ class Chart extends BaseChart
     /**
      * Initiates the Highcharts Line Chart.
      *
-     * @return Self
+     * @return self
      */
     public function __construct()
     {
@@ -30,12 +29,12 @@ class Chart extends BaseChart
         $this->script = 'charts::highcharts.script';
 
         return $this->options([
-            'credits' =>[
-                'enabled' => false
+            'credits' => [
+                'enabled' => false,
             ],
             'title' => [
                 'text' => null,
-            ]
+            ],
         ]);
     }
 
@@ -49,7 +48,7 @@ class Chart extends BaseChart
         $this->options([
             'xAxis' => [
                 'categories' => json_decode($this->formatLabels()),
-            ]
+            ],
         ]);
 
         return parent::formatOptions($strict, $noBraces);

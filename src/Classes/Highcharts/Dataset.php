@@ -2,9 +2,9 @@
 
 namespace ConsoleTVs\Charts\Classes\Highcharts;
 
-use Illuminate\Support\Collection;
 use ConsoleTVs\Charts\Classes\DatasetClass;
 use ConsoleTVs\Charts\Features\Highcharts\Dataset as DatasetFeatures;
+use Illuminate\Support\Collection;
 
 class Dataset extends DatasetClass
 {
@@ -20,10 +20,10 @@ class Dataset extends DatasetClass
     /**
      * Creates a new dataset with the given values.
      *
-     * @param string $name
-     * @param string $type
+     * @param string           $name
+     * @param string           $type
      * @param array|Collection $values
-     * @param array|Collection  $options
+     * @param array|Collection $options
      */
     public function __construct(string $name, string $type, $values)
     {
@@ -31,7 +31,7 @@ class Dataset extends DatasetClass
     }
 
     /**
-     * Dataset representation
+     * Dataset representation.
      *
      * @var array
      */
@@ -40,14 +40,15 @@ class Dataset extends DatasetClass
         return array_merge($this->options, [
             'data' => $this->formatValues($labels),
             'name' => $this->name,
-            'type' => strtolower($this->type)
+            'type' => strtolower($this->type),
         ]);
     }
 
     /**
      * Formats the values.
      *
-     * @param  array  $labels
+     * @param array $labels
+     *
      * @return array
      */
     protected function formatValues(array $labels)
@@ -59,7 +60,7 @@ class Dataset extends DatasetClass
                 ->map(function ($value, $key) use ($colors, $labels) {
                     $val = [
                         'name' => $labels[$key],
-                        'y' => $value,
+                        'y'    => $value,
                     ];
 
                     if ($colors->count() > 0) {
@@ -74,9 +75,10 @@ class Dataset extends DatasetClass
     }
 
     /**
-     * Get the dataset colors;
+     * Get the dataset colors;.
      *
-     * @param  array  $labels
+     * @param array $labels
+     *
      * @return Collection
      */
     protected function getColors(array $labels)

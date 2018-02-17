@@ -7,14 +7,15 @@ trait Chart
     /**
      * Show or hide the chart legend.
      *
-     * @param boolean $legend
-     * @return Self
+     * @param bool $legend
+     *
+     * @return self
      */
     public function displayLegend(bool $legend)
     {
         return $this->options([
             'legend' => [
-                'show' => $legend
+                'show' => $legend,
             ],
         ]);
     }
@@ -22,15 +23,16 @@ trait Chart
     /**
      * Show or hide the tooltip.
      *
-     * @param boolean $tooltip
-     * @return Self
+     * @param bool $tooltip
+     *
+     * @return self
      */
     public function tooltip(bool $tooltip)
     {
         return $this->options([
             'tooltip' => [
-                'show' => $tooltip
-            ]
+                'show' => $tooltip,
+            ],
         ]);
     }
 
@@ -38,23 +40,25 @@ trait Chart
      * Set the chart label.
      *
      * @param string $label
-     * @return Self
+     *
+     * @return self
      */
     public function label(string $label)
     {
         return $this->options([
             'yAxis' => [
-                'name' => $label,
-                'nameLocation' => 'middle'
-            ]
+                'name'         => $label,
+                'nameLocation' => 'middle',
+            ],
         ]);
     }
 
     /**
-     * Show the minimalistic
+     * Show the minimalistic.
      *
-     * @param boolean $minimalist
-     * @return Self
+     * @param bool $minimalist
+     *
+     * @return self
      */
     public function minimalist(bool $minimalist = true)
     {
@@ -64,66 +68,67 @@ trait Chart
         return $this->options([
             'xAxis' => [
                 'axisLabel' => [
-                    'show' => !$minimalist
+                    'show' => !$minimalist,
                 ],
                 'splitLine' => [
-                    'show' => !$minimalist
-                ]
+                    'show' => !$minimalist,
+                ],
             ],
             'yAxis' => [
                 'axisLabel' => [
-                    'show' => !$minimalist
+                    'show' => !$minimalist,
                 ],
                 'splitLine' => [
-                    'show' => !$minimalist
-                ]
-            ]
+                    'show' => !$minimalist,
+                ],
+            ],
         ]);
     }
 
     /**
      * Display the chart axes.
      *
-     * @param boolean $display
-     * @return Self
+     * @param bool $display
+     *
+     * @return self
      */
     public function displayAxes(bool $display)
     {
         return $this->options([
             'xAxis' => [
                 'axisLine' => [
-                    'show' => $display
+                    'show' => $display,
                 ],
                 'axisTick' => [
-                    'show' => $display
+                    'show' => $display,
                 ],
             ],
             'yAxis' => [
                 'axisLine' => [
-                    'show' => $display
+                    'show' => $display,
                 ],
                 'axisTick' => [
-                    'show' => $display
+                    'show' => $display,
                 ],
-            ]
+            ],
         ]);
     }
 
     /**
      * ALlow to export the chart.
      *
-     * @return Self
+     * @return self
      */
     public function export(bool $export = true, string $title = ' ')
     {
         return $this->options([
             'toolbox' => [
-                'show' => true,
+                'show'    => true,
                 'feature' => [
                     'saveAsImage' => [
-                        'title' => $title
-                    ]
-                ]
+                        'title' => $title,
+                    ],
+                ],
             ],
         ]);
     }
@@ -131,12 +136,13 @@ trait Chart
     /**
      * Set the chart title.
      *
-     * @param  string  $title
-     * @param  integer $font_size
-     * @param  string  $color
-     * @param  boolean $bold
-     * @param  string  $font_family
-     * @return Self
+     * @param string $title
+     * @param int    $font_size
+     * @param string $color
+     * @param bool   $bold
+     * @param string $font_family
+     *
+     * @return self
      */
     public function title(
         string $title,
@@ -147,15 +153,15 @@ trait Chart
     ) {
         return $this->options([
             'title' => [
-                'show' => true,
-                'text' => $title,
+                'show'      => true,
+                'text'      => $title,
                 'textStyle' => [
                     'fontFamily' => $font_family,
-                    'fontSize' => $font_size,
-                    'color' => $color,
+                    'fontSize'   => $font_size,
+                    'color'      => $color,
                     'fontWeight' => $bold,
-                ]
-            ]
+                ],
+            ],
         ]);
     }
 }

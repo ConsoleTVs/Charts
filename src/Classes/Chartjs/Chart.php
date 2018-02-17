@@ -2,7 +2,6 @@
 
 namespace ConsoleTVs\Charts\Classes\Chartjs;
 
-use Illuminate\Support\Collection;
 use ConsoleTVs\Charts\Classes\BaseChart;
 use ConsoleTVs\Charts\Features\Chartjs\Chart as ChartFeatures;
 
@@ -20,7 +19,7 @@ class Chart extends BaseChart
     /**
      * Initiates the Chartjs Line Chart.
      *
-     * @return Self
+     * @return self
      */
     public function __construct()
     {

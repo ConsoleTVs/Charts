@@ -2,9 +2,9 @@
 
 namespace ConsoleTVs\Charts\Classes\Echarts;
 
-use Illuminate\Support\Collection;
 use ConsoleTVs\Charts\Classes\DatasetClass;
 use ConsoleTVs\Charts\Features\Echarts\Dataset as DatasetFeatures;
+use Illuminate\Support\Collection;
 
 class Dataset extends DatasetClass
 {
@@ -20,8 +20,8 @@ class Dataset extends DatasetClass
     /**
      * Creates a new dataset with the given values.
      *
-     * @param string $name
-     * @param string $type
+     * @param string           $name
+     * @param string           $type
      * @param array|Collection $values
      */
     public function __construct(string $name, string $type, $values)
@@ -39,7 +39,7 @@ class Dataset extends DatasetClass
         return array_merge($this->options, [
             'data' => $this->getValues($labels),
             'name' => $this->name,
-            'type' => strtolower($this->type)
+            'type' => strtolower($this->type),
         ]);
     }
 
@@ -47,6 +47,7 @@ class Dataset extends DatasetClass
      * Get the formated values.
      *
      * @param array $labels
+     *
      * @return array
      */
     protected function getValues(array $labels)
@@ -55,7 +56,7 @@ class Dataset extends DatasetClass
             return Collection::make($this->values)
                 ->map(function ($value, $key) use ($labels) {
                     return [
-                        'name' => $labels[$key],
+                        'name'  => $labels[$key],
                         'value' => $value,
                     ];
                 })->toArray();

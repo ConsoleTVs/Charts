@@ -2,9 +2,9 @@
 
 namespace ConsoleTVs\Charts\Classes\Fusioncharts;
 
-use Illuminate\Support\Collection;
 use ConsoleTVs\Charts\Classes\BaseChart;
 use ConsoleTVs\Charts\Features\Fusioncharts\Chart as ChartFeatures;
+use Illuminate\Support\Collection;
 
 class Chart extends BaseChart
 {
@@ -27,7 +27,7 @@ class Chart extends BaseChart
     /**
      * Initiates the Chartjs Line Chart.
      *
-     * @return Self
+     * @return self
      */
     public function __construct()
     {
@@ -37,25 +37,25 @@ class Chart extends BaseChart
         $this->script = 'charts::fusioncharts.script';
 
         return $this->options([
-            'bgColor' => '#ffffff',
-            'borderAlpha' => 0,
-            'canvasBorderAlpha' => 0,
-            'usePlotGradientColor' => false,
-            'plotBorderAlpha' => 0,
-            'divlineColor' => '#22292F',
-            'divLineIsDashed' => true,
+            'bgColor'                 => '#ffffff',
+            'borderAlpha'             => 0,
+            'canvasBorderAlpha'       => 0,
+            'usePlotGradientColor'    => false,
+            'plotBorderAlpha'         => 0,
+            'divlineColor'            => '#22292F',
+            'divLineIsDashed'         => true,
             'showAlternateHGridColor' => false,
-            'captionFontBold' => true,
-            'captionFontSize' => 14,
-            'subcaptionFontBold' => false,
-            'subcaptionFontSize' => 14,
-            'legendBorderAlpha' => 0,
-            'legendShadow' => 0,
-            "hoverfillcolor" => "#CCCCCC",
-            "piebordercolor" => "#FFFFFF",
-            "hoverfillcolor" => "#CCCCCC",
-            'use3DLighting' => false,
-            'showShadow' => false,
+            'captionFontBold'         => true,
+            'captionFontSize'         => 14,
+            'subcaptionFontBold'      => false,
+            'subcaptionFontSize'      => 14,
+            'legendBorderAlpha'       => 0,
+            'legendShadow'            => 0,
+            'hoverfillcolor'          => '#CCCCCC',
+            'piebordercolor'          => '#FFFFFF',
+            'hoverfillcolor'          => '#CCCCCC',
+            'use3DLighting'           => false,
+            'showShadow'              => false,
         ]);
     }
 

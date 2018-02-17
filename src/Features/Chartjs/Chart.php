@@ -7,7 +7,7 @@ trait Chart
     /**
      * Minalist chart display (Hide labels and axes).
      *
-     * @return Self
+     * @return self
      */
     public function minimalist(bool $display)
     {
@@ -19,23 +19,25 @@ trait Chart
     /**
      * Display the chart legend.
      *
-     * @param  bool   $legend
-     * @return Self
+     * @param bool $legend
+     *
+     * @return self
      */
     public function displayLegend(bool $legend)
     {
         return $this->options([
             'legend' => [
-                'display' => $legend
-            ]
+                'display' => $legend,
+            ],
         ]);
     }
 
     /**
      * Display the chart axis.
      *
-     * @param  bool   $axes
-     * @return Self
+     * @param bool $axes
+     *
+     * @return self
      */
     public function displayAxes(bool $axes, bool $strict = false)
     {
@@ -43,7 +45,7 @@ trait Chart
             return $this->options([
                 'scale' => [
                     'display' => $axes,
-                ]
+                ],
             ]);
         }
 
@@ -52,22 +54,23 @@ trait Chart
                 'xAxes' => [
                     [
                         'display' => $axes,
-                    ]
+                    ],
                 ],
                 'yAxes' => [
                     [
-                        'display' => $axes
-                    ]
-                ]
-            ]
+                        'display' => $axes,
+                    ],
+                ],
+            ],
         ]);
     }
 
     /**
      * Set the bar width of the X Axis.
      *
-     * @param  float  $width
-     * @return Self
+     * @param float $width
+     *
+     * @return self
      */
     public function barWidth(float $width)
     {
@@ -76,21 +79,22 @@ trait Chart
                 'xAxes' => [
                     [
                         'barPercentage' => $width,
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ]);
     }
 
     /**
      * Set the chart title.
      *
-     * @param  string  $title
-     * @param  integer $font_size
-     * @param  string  $color
-     * @param  boolean $bold
-     * @param  string  $font_family
-     * @return Self
+     * @param string $title
+     * @param int    $font_size
+     * @param string $color
+     * @param bool   $bold
+     * @param string $font_family
+     *
+     * @return self
      */
     public function title(
         string $title,
@@ -101,13 +105,13 @@ trait Chart
     ) {
         return $this->options([
             'title' => [
-                'display' => true,
+                'display'    => true,
                 'fontFamily' => $font_family,
-                'fontSize' => $font_size,
-                'fontColor' => $color,
-                'fontStyle' => $bold,
-                'text' => $title,
-            ]
+                'fontSize'   => $font_size,
+                'fontColor'  => $color,
+                'fontStyle'  => $bold,
+                'text'       => $title,
+            ],
         ]);
     }
 }

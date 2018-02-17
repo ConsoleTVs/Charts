@@ -12,8 +12,8 @@ class Dataset extends DatasetClass
     /**
      * Creates a new dataset with the given values.
      *
-     * @param string $name
-     * @param string $type
+     * @param string           $name
+     * @param string           $type
      * @param array|Collection $values
      */
     public function __construct(string $name, string $type, $values)
@@ -21,7 +21,7 @@ class Dataset extends DatasetClass
         parent::__construct($name, $type, $values);
 
         $this->options([
-            'borderWidth' => 2
+            'borderWidth' => 2,
         ]);
     }
 
@@ -33,9 +33,9 @@ class Dataset extends DatasetClass
     public function format()
     {
         return array_merge($this->options, [
-            'data' => $this->values,
+            'data'  => $this->values,
             'label' => $this->name,
-            'type' => strtolower($this->type)
+            'type'  => strtolower($this->type),
         ]);
     }
 }

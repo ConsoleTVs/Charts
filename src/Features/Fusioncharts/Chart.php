@@ -7,8 +7,9 @@ trait Chart
     /**
      * Set the chart label.
      *
-     * @param  string $label
-     * @return Self
+     * @param string $label
+     *
+     * @return self
      */
     public function label(string $label)
     {
@@ -20,12 +21,13 @@ trait Chart
     /**
      * Set the chart title.
      *
-     * @param  string  $title
-     * @param  integer $font_size
-     * @param  string  $color
-     * @param  boolean $bold
-     * @param  string  $font_family
-     * @return Self
+     * @param string $title
+     * @param int    $font_size
+     * @param string $color
+     * @param bool   $bold
+     * @param string $font_family
+     *
+     * @return self
      */
     public function title(
          string $title,
@@ -35,23 +37,24 @@ trait Chart
          string $font_family = "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif"
      ) {
         return $this->options([
-            'caption' => $title,
-            'captionFontSize' => $font_size,
+            'caption'          => $title,
+            'captionFontSize'  => $font_size,
             'captionFontColor' => $color,
-            'captionFontBold' => $bold,
-            'captionFont' => $font_family,
+            'captionFontBold'  => $bold,
+            'captionFont'      => $font_family,
         ]);
     }
 
     /**
      * Set the chart subtitle.
      *
-     * @param  string  $subtitle
-     * @param  integer $font_size
-     * @param  string  $color
-     * @param  boolean $bold
-     * @param  string  $font_family
-     * @return Self
+     * @param string $subtitle
+     * @param int    $font_size
+     * @param string $color
+     * @param bool   $bold
+     * @param string $font_family
+     *
+     * @return self
      */
     public function subtitle(
          string $subtitle,
@@ -61,26 +64,27 @@ trait Chart
          string $font_family = "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif"
      ) {
         return $this->options([
-            'subCaption' => $subtitle,
-            'subCaptionFontSize' => $font_size,
+            'subCaption'          => $subtitle,
+            'subCaptionFontSize'  => $font_size,
             'subCaptionFontColor' => $color,
-            'subCaptionFontBold' => $bold,
-            'subCaptionFont' => $font_family,
+            'subCaptionFontBold'  => $bold,
+            'subCaptionFont'      => $font_family,
         ]);
     }
 
     /**
      * Determines if the chart should show the export button.
      *
-     * @param  bool    $export
-     * @param  boolean $client
-     * @return Self
+     * @param bool $export
+     * @param bool $client
+     *
+     * @return self
      */
     public function export(bool $export, bool $client = true)
     {
         return $this->options([
-            "exportenabled" => $export,
-            "exportatclient" => $client,
+            'exportenabled'  => $export,
+            'exportatclient' => $client,
         ]);
     }
 }

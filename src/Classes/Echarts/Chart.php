@@ -2,7 +2,6 @@
 
 namespace ConsoleTVs\Charts\Classes\Echarts;
 
-use Illuminate\Support\Collection;
 use ConsoleTVs\Charts\Classes\BaseChart;
 use ConsoleTVs\Charts\Features\Echarts\Chart as ChartFeatures;
 
@@ -20,7 +19,7 @@ class Chart extends BaseChart
     /**
      * Initiates the Chartjs Line Chart.
      *
-     * @return Self
+     * @return self
      */
     public function __construct()
     {
@@ -31,28 +30,28 @@ class Chart extends BaseChart
 
         return $this->options([
             'legend' => [
-                'show' => true
+                'show' => true,
             ],
             'tooltip' => [
-                'show' => true
-            ]
+                'show' => true,
+            ],
         ]);
     }
 
     /**
      * Formats the labels.
      *
-     * @return Self
+     * @return self
      */
     public function formatOptions(bool $strict = false, bool $noBraces = false)
     {
         $this->options([
             'xAxis' => [
                 'show' => true,
-                'data' => json_decode($this->formatLabels())
+                'data' => json_decode($this->formatLabels()),
             ],
             'yAxis' => [
-                'show' => true
+                'show' => true,
             ],
         ]);
 

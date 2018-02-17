@@ -2,9 +2,9 @@
 
 namespace ConsoleTVs\Charts\Classes\Fusioncharts;
 
-use Illuminate\Support\Collection;
 use ConsoleTVs\Charts\Classes\DatasetClass;
 use ConsoleTVs\Charts\Features\Fusioncharts\Dataset as DatasetFeatures;
+use Illuminate\Support\Collection;
 
 class Dataset extends DatasetClass
 {
@@ -20,8 +20,8 @@ class Dataset extends DatasetClass
     /**
      * Creates a new dataset with the given values.
      *
-     * @param string $name
-     * @param string $type
+     * @param string           $name
+     * @param string           $type
      * @param array|Collection $values
      */
     public function __construct(string $name, string $type, $values)
@@ -30,23 +30,24 @@ class Dataset extends DatasetClass
     }
 
     /**
-     * Dataset representation
+     * Dataset representation.
      *
      * @var array
      */
     public function format(array $labels = [])
     {
         return array_merge($this->options, [
-            'data' => $this->formatValues($labels),
+            'data'       => $this->formatValues($labels),
             'seriesName' => $this->name,
-            'renderAs' => strtolower($this->type)
+            'renderAs'   => strtolower($this->type),
         ]);
     }
 
     /**
      * Formats the chart values.
      *
-     * @param  array  $labels
+     * @param array $labels
+     *
      * @return array
      */
     protected function formatValues(array $labels)
@@ -80,7 +81,8 @@ class Dataset extends DatasetClass
     /**
      * Get the chart colors.
      *
-     * @param  array  $labels
+     * @param array $labels
+     *
      * @return Collection
      */
     protected function getColors(array $labels)

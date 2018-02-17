@@ -7,41 +7,44 @@ trait Chart
     /**
      * Display the chart axes.
      *
-     * @param  bool   $axes
-     * @return Self
+     * @param bool $axes
+     *
+     * @return self
      */
     public function displayAxes(bool $axes)
     {
         return $this->options([
             'xAxis' => [
-                'visible' => $axes
+                'visible' => $axes,
             ],
             'yAxis' => [
-                'visible' => $axes
-            ]
+                'visible' => $axes,
+            ],
         ]);
     }
 
     /**
      * Display the legend.
      *
-     * @param  bool   $legend
-     * @return Self
+     * @param bool $legend
+     *
+     * @return self
      */
     public function displayLegend(bool $legend)
     {
         return $this->options([
             'legend' => [
-                'enabled' => $legend
-            ]
+                'enabled' => $legend,
+            ],
         ]);
     }
 
     /**
      * Set the chart style to minimalist.
      *
-     * @param  boolean $display
-     * @return Self
+     * @param bool $display
+     *
+     * @return self
      */
     public function minimalist(bool $display = false)
     {
@@ -53,39 +56,41 @@ trait Chart
     /**
      * Set the highcharts yAxis label.
      *
-     * @param  string $label
-     * @return Self
+     * @param string $label
+     *
+     * @return self
      */
     public function label(string $label)
     {
         return $this->options([
             'yAxis' => [
                 'title' => [
-                    'text' => $label
-                ]
-            ]
+                    'text' => $label,
+                ],
+            ],
         ]);
     }
 
     /**
      * Set the chart title.
      *
-     * @param  string $title
-     * @return Self
+     * @param string $title
+     *
+     * @return self
      */
     public function title(string $title)
     {
         return $this->options([
             'title' => [
                 'text' => $title,
-            ]
+            ],
         ]);
     }
 
     /**
      * Shapes the pie chart into a doughnut.
      *
-     * @return Self
+     * @return self
      */
     public function doughnut(int $size = 50)
     {
@@ -93,8 +98,8 @@ trait Chart
             'plotOptions' => [
                 'pie' => [
                     'innerSize' => "{$size}%",
-                ]
-            ]
+                ],
+            ],
         ]);
     }
 }

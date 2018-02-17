@@ -47,14 +47,15 @@ class ChartsCommand extends Command
             mkdir($path, 0777, true);
         }
 
-        $fpath = $path . '/' . $this->arguments('name')['name'] . '.php';
+        $fpath = $path.'/'.$this->arguments('name')['name'].'.php';
 
         if (file_exists($fpath)) {
             $this->error('[Charts] File already exists!');
+
             return;
         }
 
-        $file = file_get_contents(__DIR__ . '/../Classes/ChartCLass.php');
+        $file = file_get_contents(__DIR__.'/../Classes/ChartCLass.php');
 
         file_put_contents($fpath, $file);
 
@@ -74,6 +75,7 @@ class ChartsCommand extends Command
      * @param string $find
      * @param string $replace
      * @param string $file_path
+     *
      * @return void
      */
     protected function strReplaceFile(string $find, string $replace, string $file_path)

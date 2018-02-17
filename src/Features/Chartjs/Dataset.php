@@ -7,8 +7,9 @@ trait Dataset
     /**
      * Set the dataset border color.
      *
-     * @param  string|array $color
-     * @return Self
+     * @param string|array $color
+     *
+     * @return self
      */
     public function color($color)
     {
@@ -20,8 +21,9 @@ trait Dataset
     /**
      * Set the dataset background color.
      *
-     * @param  string|array $color
-     * @return Self
+     * @param string|array $color
+     *
+     * @return self
      */
     public function backgroundColor($color)
     {
@@ -33,8 +35,9 @@ trait Dataset
     /**
      * Determines if the dataset is filled.
      *
-     * @param  boolean $filled
-     * @return Self
+     * @param bool $filled
+     *
+     * @return self
      */
     public function fill(bool $filled)
     {
@@ -46,8 +49,9 @@ trait Dataset
     /**
      * Set the chart line tension.
      *
-     * @param  int    $tension
-     * @return Self
+     * @param int $tension
+     *
+     * @return self
      */
     public function lineTension(float $tension)
     {
@@ -59,8 +63,9 @@ trait Dataset
     /**
      * Set the line to a dashed line in the chart options.
      *
-     * @param  array  $dashed
-     * @return Self
+     * @param array $dashed
+     *
+     * @return self
      */
     public function dashed(array $dashed = [5])
     {

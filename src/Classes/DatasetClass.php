@@ -42,10 +42,10 @@ class DatasetClass
     /**
      * Creates a new dataset with the given values.
      *
-     * @param string $name
-     * @param string $type
+     * @param string           $name
+     * @param string           $type
      * @param array|Collection $values
-     * @param array|Collection  $options
+     * @param array|Collection $options
      */
     public function __construct(string $name, string $type, $values)
     {
@@ -59,8 +59,9 @@ class DatasetClass
     /**
      * Set the dataset type.
      *
-     * @param  string $type
-     * @return Self
+     * @param string $type
+     *
+     * @return self
      */
     public function type(string $type)
     {
@@ -72,8 +73,9 @@ class DatasetClass
     /**
      * Set the dataset values.
      *
-     * @param  array|Collection $values
-     * @return Self
+     * @param array|Collection $values
+     *
+     * @return self
      */
     public function values($values)
     {
@@ -85,9 +87,10 @@ class DatasetClass
     /**
      * Set the dataset options.
      *
-     * @param  array|Collection  $options
-     * @param  boolean $overwrite
-     * @return Self
+     * @param array|Collection $options
+     * @param bool             $overwrite
+     *
+     * @return self
      */
     public function options($options, bool $overwrite = false)
     {
@@ -103,7 +106,8 @@ class DatasetClass
     /**
      * Matches the values of the dataset with the given number.
      *
-     * @param  int    $values
+     * @param int $values
+     *
      * @return void
      */
     public function matchValues(int $values)

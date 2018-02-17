@@ -4,7 +4,6 @@ namespace ConsoleTVs\Charts\Classes;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\View;
-use ConsoleTVs\Charts\Classes\DatasetClass;
 
 class BaseChart
 {
@@ -96,7 +95,7 @@ class BaseChart
     /**
      * Adds a new dataset to the chart.
      *
-     * @param string $name
+     * @param string           $name
      * @param array|Collection $data
      */
     public function dataset(string $name, string $type, $data)
@@ -111,8 +110,9 @@ class BaseChart
     /**
      * Set the chart labels.
      *
-     * @param  array|Collection $labels
-     * @return Self
+     * @param array|Collection $labels
+     *
+     * @return self
      */
     public function labels($labels)
     {
@@ -124,9 +124,10 @@ class BaseChart
     /**
      * Set the chart options.
      *
-     * @param  array|Collection $options
-     * @param  boolean $overwrite
-     * @return Self
+     * @param array|Collection $options
+     * @param bool             $overwrite
+     *
+     * @return self
      */
     public function options($options, bool $overwrite = false)
     {
@@ -142,8 +143,9 @@ class BaseChart
     /**
      * Set the chart container.
      *
-     * @param  string $container
-     * @return Self
+     * @param string $container
+     *
+     * @return self
      */
     public function container(string $container = null)
     {
@@ -159,8 +161,9 @@ class BaseChart
     /**
      * Set the chart script.
      *
-     * @param  string $script
-     * @return Self
+     * @param string $script
+     *
+     * @return self
      */
     public function script(string $script = null)
     {
@@ -180,8 +183,9 @@ class BaseChart
     /**
      * Set the chart type.
      *
-     * @param  string $type
-     * @return Self
+     * @param string $type
+     *
+     * @return self
      */
     public function type(string $type)
     {
@@ -193,8 +197,9 @@ class BaseChart
     /**
      * Set the chart height.
      *
-     * @param  int    $height
-     * @return Self
+     * @param int $height
+     *
+     * @return self
      */
     public function height(int $height)
     {
@@ -206,8 +211,9 @@ class BaseChart
     /**
      * Set the chart width.
      *
-     * @param  int    $width
-     * @return Self
+     * @param int $width
+     *
+     * @return self
      */
     public function width(int $width)
     {
@@ -239,7 +245,8 @@ class BaseChart
     /**
      * Formats the chart options.
      *
-     * @param  boolean $strict
+     * @param bool $strict
+     *
      * @return string
      */
     public function formatOptions(bool $strict = false, bool $noBraces = false)
@@ -256,7 +263,7 @@ class BaseChart
     /**
      * Reset the chart options.
      *
-     * @return Self
+     * @return self
      */
     public function reset()
     {
@@ -281,13 +288,14 @@ class BaseChart
     /**
      * Formats the container options.
      *
-     * @param  string  $type
-     * @param  boolean $maxIfNull
+     * @param string $type
+     * @param bool   $maxIfNull
+     *
      * @return string
      */
     public function formatContainerOptions(string $type = 'css', bool $maxIfNull = false)
     {
-        $options = "";
+        $options = '';
         $height = ($maxIfNull && !$this->height) ? '100%' : $this->height;
         $width = ($maxIfNull && !$this->width) ? '100%' : $this->width;
 
