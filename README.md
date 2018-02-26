@@ -9,6 +9,8 @@
 
 ## Redisigned concepts
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b96ce6dd50de4a69ba191336a04a59e5)](https://app.codacy.com/app/consoletvs/Charts?utm_source=github.com&utm_medium=referral&utm_content=ConsoleTVs/Charts&utm_campaign=badger)
+
 Welcome to Charts 6.0. We created this version from the ground up, feel free to explode the documentation :)
 
 <p align="center"><a href="https://erik.cat/projects/charts"><img height="250" src="https://i.imgur.com/F0PDyYE.png"></a></p>
