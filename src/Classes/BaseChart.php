@@ -70,19 +70,19 @@ class BaseChart
      */
     public $api_url = '';
 
-	/**
-	 * Stores the API Ajax type if the chart is loaded over API.
-	 *
-	 * @var string
-	 */
-	public $api_type = '';
+    /**
+     * Stores the API Ajax type if the chart is loaded over API.
+     *
+     * @var string
+     */
+    public $api_type = '';
 
-	/**
-	 * Stores the API POST Data if the chart is loaded over API with Ajax POST type.
-	 *
-	 * @var string
-	 */
-	public $api_var = '';
+    /**
+     * Stores the API POST Data if the chart is loaded over API with Ajax POST type.
+     *
+     * @var string
+     */
+    public $api_var = '';
 
     /**
      * Determines if the loader is show.
@@ -355,11 +355,11 @@ class BaseChart
     {
         if  (empty($api_type) ) {
 
-        	$api_type = 'get';
+            $api_type = 'get';
 
-		}
+        }
 
-    	$this->api_url = $api_url;
+        $this->api_url = $api_url;
 
         $this->api_type = strtoLower($api_type);
 
