@@ -51,11 +51,12 @@ class ChartsCommand extends GeneratorCommand
         // Fallback for Laravel <= 5.4
         if (is_callable('parent::handle')) {
             parent::handle();
+            $name = $this->qualifyClass($this->getNameInput());
         } else {
             parent::fire();
+            $name = $this->parseName($this->getNameInput());
         }
 
-        $name = $this->qualifyClass($this->getNameInput());
         $path = $this->getPath($name);
 
         $this->info("[Charts] Chart created! - Location: {$path}");
