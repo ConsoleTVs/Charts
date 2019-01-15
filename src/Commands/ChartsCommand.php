@@ -57,6 +57,12 @@ class ChartsCommand extends GeneratorCommand
             $name = $this->parseName($this->getNameInput());
         }
 
+        if (is_callable([$this, 'qualifyClass'])) {
+            $name = $this->qualifyClass($this->getNameInput());
+        } else {
+            $name = $this->parseName($this->getNameInput());
+        }
+
         $path = $this->getPath($name);
 
         $this->info("[Charts] Chart created! - Location: {$path}");
