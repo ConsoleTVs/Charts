@@ -18,9 +18,9 @@ It uses a simple API to create all the JS logic for you. You just need to write 
 
 ## Documentation
 
-The [documentation for laravel-charts v6](https://v6.charts.erik.cat) can be found here, by pressing the image below.
+The [documentation for laravel-charts v6](https://charts.erik.cat) can be found here, by pressing the image below.
 
-<p align="center"><a href="https://v6.charts.erik.cat"><img height="250" src="https://i.imgur.com/F0PDyYE.png"></a></p>
+<p align="center"><a href="https://charts.erik.cat"><img height="250" src="https://i.imgur.com/F0PDyYE.png"></a></p>
 
 ## Example screenshot
 
