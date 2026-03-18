@@ -226,11 +226,11 @@ class BaseChart
     /**
      * Set the chart container.
      *
-     * @param string $container
+    * @param string|null $container
      *
      * @return self
      */
-    public function container(string $container = null)
+    public function container(?string $container = null)
     {
         if (!$container) {
             return View::make($this->container, ['chart' => $this]);
@@ -244,11 +244,11 @@ class BaseChart
     /**
      * Set the chart script.
      *
-     * @param string $script
+    * @param string|null $script
      *
      * @return self
      */
-    public function script(string $script = null)
+    public function script(?string $script = null)
     {
         if (count($this->datasets) == 0 && !$this->api_url) {
             throw new \Exception('No datasets provided, please provide at least one dataset to generate a chart');
